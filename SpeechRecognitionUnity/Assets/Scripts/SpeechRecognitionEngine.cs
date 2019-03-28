@@ -12,7 +12,8 @@ public class SpeechRecognitionEngine : MonoBehaviour
     public Text results;
     public Image target;
     protected PhraseRecognizer recognizer;
-    protected string word = "right";
+    protected string word = "";
+    public int questionsRight;
 
     SceneManagement sceneManager = new SceneManagement();
 
@@ -50,7 +51,7 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 break;
             case "quit":
                 break;
-            case "New game":
+            case "new game":
             sceneManager.StartGame();
                 break;
         }
@@ -63,5 +64,10 @@ public class SpeechRecognitionEngine : MonoBehaviour
             recognizer.OnPhraseRecognized -= Recognizer_OnPhraseRecognized;
             recognizer.Stop();
         }
+    }
+
+    void checkAnswer(word)
+    {
+
     }
 }

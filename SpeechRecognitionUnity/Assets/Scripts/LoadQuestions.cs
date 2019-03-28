@@ -25,6 +25,7 @@ public class QuestionList
 [System.Serializable]
 public class LoadQuestions : MonoBehaviour {
 
+	SoundController soundController = new SoundController();
 	private string gameDataFileName = "questions.json";
 	private string jsonString;
 	private string jsonFromFile;
@@ -39,6 +40,7 @@ public class LoadQuestions : MonoBehaviour {
 	{
 		// Set the text
 		generateText();
+
 	}
 	
 	// Update is called once per frame
@@ -70,6 +72,11 @@ public class LoadQuestions : MonoBehaviour {
 
 	void generateText()
 	{
+		if(soundController!=null)
+		{
+			soundController.letsPlay();
+		}
+		
 		Question newQuestion = generateQuestion();
 		questionText.text = newQuestion.question;
 		answerAText.text = newQuestion.A;
