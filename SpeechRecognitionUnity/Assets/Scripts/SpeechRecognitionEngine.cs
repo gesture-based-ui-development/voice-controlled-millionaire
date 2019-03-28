@@ -5,16 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
 
 public class SpeechRecognitionEngine : MonoBehaviour
-{
-    private string[] keywords = new string[] { "a", "b", "c", "d" , "quit", "pause"};
+{   
+    // Variables
+    private string[] keywords = new string[] { "a", "b", "c", "d" , "quit", "pause", "new game"};
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
-    public float speed = 1;
-
     public Text results;
     public Image target;
-
     protected PhraseRecognizer recognizer;
     protected string word = "right";
+
+    SceneManagement sceneManager = new SceneManagement();
 
     private void Start()
     {
@@ -49,6 +49,9 @@ public class SpeechRecognitionEngine : MonoBehaviour
             case "d":
                 break;
             case "quit":
+                break;
+            case "New game":
+            sceneManager.StartGame();
                 break;
         }
     }

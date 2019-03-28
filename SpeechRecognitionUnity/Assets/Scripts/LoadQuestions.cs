@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class Question
@@ -26,22 +28,17 @@ public class LoadQuestions : MonoBehaviour {
 	private string gameDataFileName = "questions.json";
 	private string jsonString;
 	private string jsonFromFile;
-	
+	public TMP_Text questionText;
+	public TMP_Text answerAText;
+	public TMP_Text answerBText;
+	public TMP_Text answerCText;
+	public TMP_Text answerDText;
+
 	// Use this for initialization
 	void Start () 
 	{
-		Debug.Log(questionList);
-		Debug.Log(questionList.questions[0].question);
-		Debug.Log(questionList.questions[0].A);
-		Debug.Log(questionList.questions[0].B);
-		Debug.Log(questionList.questions[0].C);
-		Debug.Log(questionList.questions[0].D);
-		Debug.Log(questionList.questions[0].answer);
-		//Debug.Log(newQuestion[2].B);
-		//Debug.Log(newQuestion[2].C);
-		//Debug.Log(newQuestion[2].D);
-		//Debug.Log(newQuestion[2].answer);
-		//Debug.Log(jsonString);
+		// Set the text
+		generateText();
 	}
 	
 	// Update is called once per frame
@@ -56,7 +53,7 @@ public class LoadQuestions : MonoBehaviour {
 		return value;
 	}
 
-	void generateQuestion()
+	Question generateQuestion()
 	{
 		// Read the json and load it into a string
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
@@ -65,6 +62,21 @@ public class LoadQuestions : MonoBehaviour {
 
 		// Parse the json into an object
 		QuestionList questionList = JsonUtility.FromJson<QuestionList>(jsonFromFile);
+
+		int randomNum = Random.Range(1, 500);
+
+		return questionList.questions[randomNum];
 	} 
+
+	void generateText()
+	{
+		Question newQuestion = generateQuestion();
+		questionText.text = newQuestion.question;
+		answerAText.text = newQuestion.A;
+		answerBText.text = newQuestion.B;
+		answerCText.text = newQuestion.C;
+		answerDText.text = newQuestion.D;
+	}
+	
 }
 
