@@ -4,16 +4,17 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Question
 {
-	public string question;
-	public string A;
-	public string B;
-	public string C;
-	public string D;
-	public string answer;
+    public string question;
+    public string A;
+    public string B;
+    public string C;
+    public string D;
+    public string answer;
 }
 
 [System.Serializable]
@@ -23,99 +24,117 @@ public class QuestionList
 }
 
 [System.Serializable]
-public class LoadQuestions : MonoBehaviour {
+public class LoadQuestions : MonoBehaviour
+{
 
-	SceneManagement sceneManager = new SceneManagement();
-	SoundController soundController = new SoundController();
-	Question currentQuestion = new Question();
-	List<Question> tenQuestionArray = new List<Question>();
-	public Question[] allQuestions;
-	private string gameDataFileName = "questions.json";
-	private string jsonString;
-	private string jsonFromFile;
-	public TMP_Text questionText;
-	public TMP_Text answerAText;
-	public TMP_Text answerBText;
-	public TMP_Text answerCText;
-	public TMP_Text answerDText;
-	public int questionLevel=0;
+    public SceneManagement sceneManager = new SceneManagement();
+    public SoundController soundController = new SoundController();
+    public static Question currentQuestion = new Question();
+    static List<Question> tenQuestionArray = new List<Question>();
+    public Question[] allQuestions;
+    private string gameDataFileName = "questions.json";
+    private string jsonString;
+    private string jsonFromFile;
+    TMP_Text questionText;
+    public TMP_Text answerAText;
+    public TMP_Text answerBText;
+    public TMP_Text answerCText;
+    public TMP_Text answerDText;
+    public static int questionLevel = 0;
 
-	// Use this for initialization
-	void Start () 
-	{
-		// Set the text
-		allQuestions = loadQuestions();
-		int randomNum = Random.Range(1, 500);
+    // Use this for initialization
+    void Start()
+    {
+        questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
 
-		for(int i=0; i<10; i++)
-		{
-			tenQuestionArray.Add(allQuestions[randomNum]);
-		}
+        // Set the text
+        allQuestions = loadQuestions();
+        int randomNum = Random.Range(1, 500);
 
-		currentQuestion = generateQuestion();
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
+        for (int i = 0; i < 10; i++)
+        {
+            tenQuestionArray.Add(allQuestions[randomNum]);
+			randomNum = Random.Range(1, 500);
+        }
 
-	string fixJson(string value)
-	{
-		value = "{\"Questions\":" + value + "}";
-		return value;
-	}
+        generateQuestion();
+    }
 
-	Question[] loadQuestions()
-	{
-		// Read the json and load it into a string
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    string fixJson(string value)
+    {
+        value = "{\"Questions\":" + value + "}";
+        return value;
+    }
+
+    Question[] loadQuestions()
+    {
+        // Read the json and load it into a string
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
-		jsonFromFile = File.ReadAllText(filePath);
-		//Debug.Log(jsonString);
+        jsonFromFile = File.ReadAllText(filePath);
+        //Debug.Log(jsonString);
 
-		// Parse the json into an object
-		QuestionList questionList = JsonUtility.FromJson<QuestionList>(jsonFromFile);
+        // Parse the json into an object
+        QuestionList questionList = JsonUtility.FromJson<QuestionList>(jsonFromFile);
 
-		return questionList.questions;
-	} 
+        return questionList.questions;
+    }
 
-	Question generateQuestion()
-	{
-		if(soundController!=null)
-		{
-			soundController.letsPlay();
-		}
+    void generateQuestion()
+    {
+        if (soundController != null)
+        {
+            soundController.letsPlay();
+        }
+
+        questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
+        answerAText = GameObject.Find("AText").GetComponent<TMP_Text>();
+        answerBText = GameObject.Find("BText").GetComponent<TMP_Text>();
+        answerCText = GameObject.Find("CText").GetComponent<TMP_Text>();
+        answerDText = GameObject.Find("DText").GetComponent<TMP_Text>();
+
+       	//currentQuestion = tenQuestionArray[questionLevel];
+        currentQuestion.question = tenQuestionArray[questionLevel].question;
+        currentQuestion.A = tenQuestionArray[questionLevel].A;
+        currentQuestion.B = tenQuestionArray[questionLevel].B;
+        currentQuestion.C = tenQuestionArray[questionLevel].C;
+        currentQuestion.D = tenQuestionArray[questionLevel].D;
+        currentQuestion.answer = tenQuestionArray[questionLevel].answer;
 		
-		currentQuestion = tenQuestionArray[questionLevel];
-		questionText.text = currentQuestion.question;
-		answerAText.text = currentQuestion.A;
-		answerBText.text = currentQuestion.B;
-		answerCText.text = currentQuestion.C;
-		answerDText.text = currentQuestion.D;
-		Debug.Log("Current Answer: " + currentQuestion.answer);
-		Debug.Log("Current Level: " + questionLevel);
+        Debug.Log("Correct Answer: " + currentQuestion.answer);
+        Debug.Log("Question: " + currentQuestion.question);
+        
+    	questionText.text = currentQuestion.question;
+        answerAText.text = currentQuestion.A;
+        answerBText.text = currentQuestion.B;
+        answerCText.text = currentQuestion.C;
+        answerDText.text = currentQuestion.D;
+       
+    }
 
-		return currentQuestion;
-	}
+    public void checkAnswer(string word)
+    {
+        currentQuestion = tenQuestionArray[questionLevel];
+        Debug.Log("Your Word: " + word);
+        Debug.Log("Correct Answer: " + currentQuestion.answer);
 
-	public void checkAnswer(string word)
-	{
-		currentQuestion = tenQuestionArray[questionLevel];
-		Debug.Log("Your Word: " + word);
-		Debug.Log("Correct Answer: " + currentQuestion.answer);
-		if(word==currentQuestion.answer)
-		{
-			Debug.Log("Answer correct.");
-			questionLevel++;
-			currentQuestion = generateQuestion();
-		}
-		else
-		{
-			Debug.Log("Incorrect answer");
-			sceneManager.ReturnToMenu();
-		}
-	}
-	
+        if (word.ToLower() == currentQuestion.answer.ToLower())
+        {
+            Debug.Log("Answer correct.");
+            questionLevel = questionLevel + 1;
+            generateQuestion();
+        }
+        else
+        {
+            Debug.Log("Incorrect answer");
+            sceneManager.ExitGame();
+        }
+    }
+
 }
 
