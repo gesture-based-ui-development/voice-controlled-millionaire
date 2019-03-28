@@ -6,7 +6,7 @@ using UnityEngine.Windows.Speech;
 
 public class SpeechRecognitionEngine : MonoBehaviour
 {
-    public string[] keywords = new string[] { "up", "down", "left", "right" , "jump", "attack"};
+    public string[] keywords = new string[] { "a", "b", "c", "d" , "quit", "pause"};
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     public float speed = 1;
 
@@ -38,31 +38,19 @@ public class SpeechRecognitionEngine : MonoBehaviour
 
     private void Update()
     {
-        var x = target.transform.position.x;
-        var y = target.transform.position.y;
-
         switch (word)
         {
-            case "up":
-                y += speed;
+            case "a":
                 break;
-            case "down":
-                y -= speed;
+            case "b":
                 break;
-            case "left":
-                x -= speed;
+            case "c":
                 break;
-            case "right":
-                x += speed;
+            case "d":
                 break;
-            case "attack":
-                x += speed;
-                                Debug.Log("DEtecting attack");
-
+            case "quit":
                 break;
         }
-
-        target.transform.position = new Vector3(x, y, 0);
     }
 
     private void OnApplicationQuit()
