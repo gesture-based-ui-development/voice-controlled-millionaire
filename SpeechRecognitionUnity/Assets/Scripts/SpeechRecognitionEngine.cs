@@ -6,7 +6,7 @@ using UnityEngine.Windows.Speech;
 
 public class SpeechRecognitionEngine : MonoBehaviour
 {
-    public string[] keywords = new string[] { "a", "b", "c", "d" , "quit", "pause"};
+    private string[] keywords = new string[] { "a", "b", "c", "d" , "quit", "pause"};
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     public float speed = 1;
 
