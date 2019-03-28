@@ -25,7 +25,11 @@ public class QuestionList
 [System.Serializable]
 public class LoadQuestions : MonoBehaviour {
 
+	SceneManagement sceneManager = new SceneManagement();
 	SoundController soundController = new SoundController();
+	Question currentQuestion = new Question();
+	List<Question> tenQuestionArray = new List<Question>();
+	public Question[] allQuestions;
 	private string gameDataFileName = "questions.json";
 	private string jsonString;
 	private string jsonFromFile;
@@ -34,13 +38,21 @@ public class LoadQuestions : MonoBehaviour {
 	public TMP_Text answerBText;
 	public TMP_Text answerCText;
 	public TMP_Text answerDText;
+	public int questionLevel=0;
 
 	// Use this for initialization
 	void Start () 
 	{
 		// Set the text
-		generateText();
+		allQuestions = loadQuestions();
+		int randomNum = Random.Range(1, 500);
 
+		for(int i=0; i<10; i++)
+		{
+			tenQuestionArray.Add(allQuestions[randomNum]);
+		}
+
+		currentQuestion = generateQuestion();
 	}
 	
 	// Update is called once per frame
@@ -55,7 +67,7 @@ public class LoadQuestions : MonoBehaviour {
 		return value;
 	}
 
-	Question generateQuestion()
+	Question[] loadQuestions()
 	{
 		// Read the json and load it into a string
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
@@ -65,24 +77,44 @@ public class LoadQuestions : MonoBehaviour {
 		// Parse the json into an object
 		QuestionList questionList = JsonUtility.FromJson<QuestionList>(jsonFromFile);
 
-		int randomNum = Random.Range(1, 500);
-
-		return questionList.questions[randomNum];
+		return questionList.questions;
 	} 
 
-	void generateText()
+	Question generateQuestion()
 	{
 		if(soundController!=null)
 		{
 			soundController.letsPlay();
 		}
 		
-		Question newQuestion = generateQuestion();
-		questionText.text = newQuestion.question;
-		answerAText.text = newQuestion.A;
-		answerBText.text = newQuestion.B;
-		answerCText.text = newQuestion.C;
-		answerDText.text = newQuestion.D;
+		currentQuestion = tenQuestionArray[questionLevel];
+		questionText.text = currentQuestion.question;
+		answerAText.text = currentQuestion.A;
+		answerBText.text = currentQuestion.B;
+		answerCText.text = currentQuestion.C;
+		answerDText.text = currentQuestion.D;
+		Debug.Log("Current Answer: " + currentQuestion.answer);
+		Debug.Log("Current Level: " + questionLevel);
+
+		return currentQuestion;
+	}
+
+	public void checkAnswer(string word)
+	{
+		currentQuestion = tenQuestionArray[questionLevel];
+		Debug.Log("Your Word: " + word);
+		Debug.Log("Correct Answer: " + currentQuestion.answer);
+		if(word==currentQuestion.answer)
+		{
+			Debug.Log("Answer correct.");
+			questionLevel++;
+			currentQuestion = generateQuestion();
+		}
+		else
+		{
+			Debug.Log("Incorrect answer");
+			sceneManager.ReturnToMenu();
+		}
 	}
 	
 }

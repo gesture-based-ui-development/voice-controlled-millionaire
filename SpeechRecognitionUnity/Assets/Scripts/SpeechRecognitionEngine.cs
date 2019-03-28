@@ -16,6 +16,7 @@ public class SpeechRecognitionEngine : MonoBehaviour
     public int questionsRight;
 
     SceneManagement sceneManager = new SceneManagement();
+    LoadQuestions loadQuestion = new LoadQuestions();
 
     private void Start()
     {
@@ -42,12 +43,16 @@ public class SpeechRecognitionEngine : MonoBehaviour
         switch (word)
         {
             case "a":
+            loadQuestion.checkAnswer(word);
                 break;
             case "b":
+            loadQuestion.checkAnswer(word);
                 break;
             case "c":
+            loadQuestion.checkAnswer(word);   
                 break;
             case "d":
+            loadQuestion.checkAnswer(word);                
                 break;
             case "quit":
                 break;
@@ -66,8 +71,5 @@ public class SpeechRecognitionEngine : MonoBehaviour
         }
     }
 
-    void checkAnswer(word)
-    {
-
-    }
+   
 }
