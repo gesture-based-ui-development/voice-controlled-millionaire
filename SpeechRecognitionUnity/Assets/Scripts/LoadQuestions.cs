@@ -28,7 +28,9 @@ public class LoadQuestions : MonoBehaviour
 {
 
     public SceneManagement sceneManager = new SceneManagement();
+    // Sound controller object to play clips.
     public SoundController soundController = new SoundController();
+    
     public static Question currentQuestion = new Question();
     static List<Question> tenQuestionArray = new List<Question>();
     public Question[] allQuestions;
@@ -42,9 +44,13 @@ public class LoadQuestions : MonoBehaviour
     public TMP_Text answerDText;
     public static int questionLevel = 0;
 
+ 
+
     // Use this for initialization
     void Start()
     {
+        // Play start audio clip on game start.
+       // SoundManager.Instance.PlayStart(letsPlay);
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
 
         // Set the text
@@ -74,6 +80,7 @@ public class LoadQuestions : MonoBehaviour
 
     Question[] loadQuestions()
     {
+        SoundManager.Instance.PlayStart();
         // Read the json and load it into a string
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
         jsonFromFile = File.ReadAllText(filePath);
@@ -87,10 +94,10 @@ public class LoadQuestions : MonoBehaviour
 
     void generateQuestion()
     {
-        if (soundController != null)
-        {
-            soundController.letsPlay();
-        }
+       // if (soundController != null)
+        //{
+         //   soundController.letsPlay();
+        //}
 
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
         answerAText = GameObject.Find("AText").GetComponent<TMP_Text>();
@@ -125,12 +132,21 @@ public class LoadQuestions : MonoBehaviour
 
         if (word.ToLower() == currentQuestion.answer.ToLower())
         {
+
+            //  soundController.playCorrect();
+            SoundManager.Instance.PlayCorrect();
             Debug.Log("Answer correct.");
+
+            
             questionLevel = questionLevel + 1;
             generateQuestion();
         }
         else
         {
+            // Play the correct sound effect.
+            //  soundController.playCorrect();
+            SoundManager.Instance.PlayIncorrect();
+
             Debug.Log("Incorrect answer");
             sceneManager.ExitGame();
         }
