@@ -18,7 +18,7 @@ public class SoundManager : MonoBehaviour {
     private void Awake()
     {
         _audios = GetComponent<AudioSource>();
-
+        
         // If there is not already an instance of SoundManager, set it to this.
         if (Instance == null)
         {
@@ -32,6 +32,7 @@ public class SoundManager : MonoBehaviour {
 
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
+        
     }
 
     // Play a single clip through the sound effects source.

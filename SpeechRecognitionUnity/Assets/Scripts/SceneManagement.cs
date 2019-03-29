@@ -22,6 +22,12 @@ public class SceneManagement : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
+    public void LoadMainMenu()
+    {
+        Debug.Log("GAME OVER");
+        SceneManager.LoadScene("Menu");
+        ExitGame();
+    }
     public void OpenOptions()
     {
         MainMenu.SetActive(false);

@@ -44,6 +44,9 @@ public class LoadQuestions : MonoBehaviour
     public TMP_Text answerDText;
     public static int questionLevel = 0;
 
+    // Dely to move to next question for 3 seconds.
+    [SerializeField]
+    private float nextQuestionDelay = 3f;
  
 
     // Use this for initialization
@@ -124,6 +127,13 @@ public class LoadQuestions : MonoBehaviour
        
     }
 
+  //  IEnumerator AdvanceToNextQuestion()
+    //{
+        // Delay next question
+        //yield return new WaitForSeconds(nextQuestionDelay);
+       // Debug.Log("WAITING IN COROUTINE");
+    //}
+
     public void checkAnswer(string word)
     {
         currentQuestion = tenQuestionArray[questionLevel];
@@ -137,7 +147,7 @@ public class LoadQuestions : MonoBehaviour
             SoundManager.Instance.PlayCorrect();
             Debug.Log("Answer correct.");
 
-            
+         //   StartCoroutine(AdvanceToNextQuestion());
             questionLevel = questionLevel + 1;
             generateQuestion();
         }
@@ -148,9 +158,11 @@ public class LoadQuestions : MonoBehaviour
             SoundManager.Instance.PlayIncorrect();
 
             Debug.Log("Incorrect answer");
-            sceneManager.ExitGame();
+            sceneManager.LoadMainMenu();
         }
-    }
+
+
+    }//checkAnswer
 
 }
 

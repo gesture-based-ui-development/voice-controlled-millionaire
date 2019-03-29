@@ -36,8 +36,9 @@ public class SpeechRecognitionEngine : MonoBehaviour
     {
         word = args.text;
         results.text = "You said: <b>" + word + "</b>";
+        WordChecker();
     }
-
+    /*
     private void Update()
     {
         switch (word)
@@ -61,7 +62,30 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 break;
         }
     }
-
+    */
+    public void WordChecker()
+    {
+        switch (word)
+        {
+            case "a":
+                loadQuestion.checkAnswer(word);
+                break;
+            case "b":
+                loadQuestion.checkAnswer(word);
+                break;
+            case "c":
+                loadQuestion.checkAnswer(word);
+                break;
+            case "d":
+                loadQuestion.checkAnswer(word);
+                break;
+            case "quit":
+                break;
+            case "new game":
+                sceneManager.StartGame();
+                break;
+        }
+    }
     private void OnApplicationQuit()
     {
         if (recognizer != null && recognizer.IsRunning)
