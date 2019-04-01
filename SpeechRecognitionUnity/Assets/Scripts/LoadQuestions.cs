@@ -27,53 +27,77 @@ public class QuestionList
 public class LoadQuestions : MonoBehaviour
 {
 
+    // Instance variables
     public SceneManagement sceneManager = new SceneManagement();
-    // Sound controller object to play clips.
     public SoundController soundController = new SoundController();
-    
     public static Question currentQuestion = new Question();
     static List<Question> tenQuestionArray = new List<Question>();
     public Question[] allQuestions;
+
+    // String variables
     private string gameDataFileName = "questions.json";
     private string jsonString;
     private string jsonFromFile;
+
+    // Text Variables
     TMP_Text questionText;
     public TMP_Text answerAText;
     public TMP_Text answerBText;
     public TMP_Text answerCText;
     public TMP_Text answerDText;
-    public static int questionLevel = 0;
+
+    // Image variables
+    public Image aBoxImage;
+    public Image bBoxImage;
+    public Image cBoxImage;
+    public Image dBoxImage;
+
+    // Misc. variables
+    public int questionLevel = 0;
 
     // Dely to move to next question for 3 seconds.
     [SerializeField]
     private float nextQuestionDelay = 3f;
- 
+    private float imageFlashTime = 0.2f;
+
+    void Awake()
+    {
+        aBoxImage = GameObject.Find("A").GetComponent<Image>();
+        bBoxImage = GameObject.Find("B").GetComponent<Image>();
+        cBoxImage = GameObject.Find("C").GetComponent<Image>();
+        dBoxImage = GameObject.Find("D").GetComponent<Image>();
+    }
 
     // Use this for initialization
     void Start()
     {
         // Play start audio clip on game start.
-       // SoundManager.Instance.PlayStart(letsPlay);
+        // SoundManager.Instance.PlayStart(letsPlay);
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
+        soundController.letsPlay();
+
+        aBoxImage.color = new Color32(0, 0, 0, 255);
+        bBoxImage.color = new Color32(0, 0, 0, 255);
+        cBoxImage.color = new Color32(0, 0, 0, 255);
+        dBoxImage.color = new Color32(0, 0, 0, 255);
 
         // Set the text
         allQuestions = loadQuestions();
         int randomNum = Random.Range(1, 500);
-        soundController.letsPlay();
+        //soundController.letsPlay();
 
         for (int i = 0; i < 10; i++)
         {
             tenQuestionArray.Add(allQuestions[randomNum]);
-			randomNum = Random.Range(1, 500);
+            randomNum = Random.Range(1, 500);
         }
 
-        generateQuestion();
+        StartCoroutine(advanceToNextQuestion(3f));
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     string fixJson(string value)
@@ -98,11 +122,18 @@ public class LoadQuestions : MonoBehaviour
 
     void generateQuestion()
     {
-       // if (soundController != null)
+        // if (soundController != null)
         //{
-         //   soundController.letsPlay();
+        //   soundController.letsPlay();
         //}
-        soundController.playEasyBackgroundMusic();
+        if (questionLevel <= 3)
+        {
+            soundController.playEasyBackgroundMusic();
+        }
+        if (questionLevel > 3)
+        {
+            soundController.playHardBackgroundMusic();
+        }
 
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
         answerAText = GameObject.Find("AText").GetComponent<TMP_Text>();
@@ -110,50 +141,76 @@ public class LoadQuestions : MonoBehaviour
         answerCText = GameObject.Find("CText").GetComponent<TMP_Text>();
         answerDText = GameObject.Find("DText").GetComponent<TMP_Text>();
 
-       	//currentQuestion = tenQuestionArray[questionLevel];
+        //currentQuestion = tenQuestionArray[questionLevel];
         currentQuestion.question = tenQuestionArray[questionLevel].question;
         currentQuestion.A = tenQuestionArray[questionLevel].A;
         currentQuestion.B = tenQuestionArray[questionLevel].B;
         currentQuestion.C = tenQuestionArray[questionLevel].C;
         currentQuestion.D = tenQuestionArray[questionLevel].D;
         currentQuestion.answer = tenQuestionArray[questionLevel].answer;
-		
+
         Debug.Log("Correct Answer: " + currentQuestion.answer);
-        Debug.Log("Question: " + currentQuestion.question);
-        
-    	questionText.text = currentQuestion.question;
+
+        questionText.text = currentQuestion.question;
         answerAText.text = currentQuestion.A;
         answerBText.text = currentQuestion.B;
         answerCText.text = currentQuestion.C;
         answerDText.text = currentQuestion.D;
-       
+
     }
 
-  //  IEnumerator AdvanceToNextQuestion()
-    //{
-        // Delay next question
-        //yield return new WaitForSeconds(nextQuestionDelay);
-       // Debug.Log("WAITING IN COROUTINE");
-    //}
+
 
     public void checkAnswer(string word)
     {
         currentQuestion = tenQuestionArray[questionLevel];
         Debug.Log("Your Word: " + word);
-        Debug.Log("Correct Answer: " + currentQuestion.answer);
 
-        if (word.ToLower() == currentQuestion.answer.ToLower())
+        switch (word)
+        {
+            case "a":
+                StartCoroutine(flashSelected(aBoxImage, word));
+                break;
+            case "b":
+                StartCoroutine(flashSelected(bBoxImage, word));
+                break;
+            case "c":
+                StartCoroutine(flashSelected(cBoxImage, word));
+                break;
+            case "d":
+                StartCoroutine(flashSelected(dBoxImage, word));
+                break;
+        }
+
+
+        /* if (word.ToLower() == currentQuestion.answer.ToLower())
         {
             soundController.playRightAnswer();
+
+            switch (word)
+            {
+                case "a":
+                    break;
+                case "b":
+                    StartCoroutine(flashCorrect(bBoxImage));
+                    break;
+                case "c":
+                    StartCoroutine(flashCorrect(cBoxImage));
+                    break;
+                case "d":
+                    StartCoroutine(flashCorrect(dBoxImage));
+                    break;
+            }
             //  soundController.playCorrect();
             //SoundManager.Instance.PlayCorrect();
-            Debug.Log("Answer correct.");
 
-         //   StartCoroutine(AdvanceToNextQuestion());
+            //   StartCoroutine(AdvanceToNextQuestion());
             questionLevel = questionLevel + 1;
-            generateQuestion();
+            //StartCoroutine(advanceToNextQuestion(3f));
+            StartCoroutine(advanceToNextQuestion(3f));
         }
-        else
+
+          else
         {
             // Play the correct sound effect.
             //  soundController.playCorrect();
@@ -162,9 +219,97 @@ public class LoadQuestions : MonoBehaviour
             Debug.Log("Incorrect answer");
             sceneManager.LoadMainMenu();
         }
+        
+         */
+
 
 
     }//checkAnswer
+
+    IEnumerator advanceToNextQuestion(float timeToWait)
+    {
+        //Debug.Log(Time.time);
+        yield return new WaitForSeconds(timeToWait);
+        generateQuestion();
+    }
+    IEnumerator flashSelected(Image imageToFlash, string word)
+    {
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(255, 165, 0, 255);
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(0, 0, 0, 255);
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(255, 165, 0, 255);
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(0, 0, 0, 255);
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(255, 165, 0, 255);
+        yield return new WaitForSeconds(3);
+
+        if (currentQuestion.answer.ToLower() == word.ToLower())
+        {
+            soundController.playRightAnswer();
+            questionLevel++;
+            StartCoroutine(flashCorrect(imageToFlash));
+        }
+        if (currentQuestion.answer.ToLower() == word.ToLower())
+        {
+            soundController.playRightAnswer();
+            questionLevel++;
+            StartCoroutine(flashCorrect(imageToFlash));
+        }
+        if (currentQuestion.answer.ToLower() == word.ToLower())
+        {
+            soundController.playRightAnswer();
+            questionLevel++;
+            StartCoroutine(flashCorrect(imageToFlash));
+
+        }
+        if (currentQuestion.answer.ToLower() == word.ToLower())
+        {
+            soundController.playRightAnswer();
+            questionLevel++;
+            StartCoroutine(flashCorrect(imageToFlash));
+        }
+        else if(currentQuestion.answer.ToLower() != word.ToLower())
+        {
+            StartCoroutine(flashIncorrect(imageToFlash));
+        }
+    }
+    IEnumerator flashCorrect(Image imageToFlash)
+    {
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(124, 252, 0, 255);
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(0, 0, 0, 255);
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(124, 252, 0, 255);
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(0, 0, 0, 255);
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(124, 252, 0, 255);
+        yield return new WaitForSeconds(imageFlashTime);
+        imageToFlash.color = new Color32(0, 0, 0, 255);
+        StartCoroutine(advanceToNextQuestion(2f));
+
+    }
+    IEnumerator flashIncorrect(Image imageToFlash)
+    {
+        soundController.playWrongAnswer();
+
+        yield return new WaitForSeconds(0.5f);
+        imageToFlash.color = new Color32(255, 0, 0, 255);
+        yield return new WaitForSeconds(0.5f);
+        imageToFlash.color = new Color32(0, 0, 0, 255);
+        yield return new WaitForSeconds(0.5f);
+        imageToFlash.color = new Color32(255, 0, 0, 255);
+        yield return new WaitForSeconds(0.5f);
+        imageToFlash.color = new Color32(0, 0, 0, 255);
+        yield return new WaitForSeconds(0.5f);
+        imageToFlash.color = new Color32(255, 0, 0, 255);
+        Debug.Log("Incorrect answer");
+        sceneManager.LoadMainMenu();
+    }
 
 
 }

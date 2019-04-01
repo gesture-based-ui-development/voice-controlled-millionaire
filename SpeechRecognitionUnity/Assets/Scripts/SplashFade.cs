@@ -16,10 +16,7 @@ public class SplashFade : MonoBehaviour
 
     void Update()
     {
-        if (isDead == true)
-        {
-            Death();
-        }
+      
     }
 
     IEnumerator Start()
@@ -52,27 +49,6 @@ public class SplashFade : MonoBehaviour
             yield return new WaitForSeconds(2.5f);
             splashImage.enabled = false;
         }
-    }
-
-    IEnumerator Death()
-    {
-        Debug.Log("Here");
-        splashImage.canvasRenderer.SetAlpha(0.0f);
-        Debug.Log("Here1");
-
-        FadeIn();
-
-        yield return new WaitForSeconds(2.5f);
-        Debug.Log("Here2");
-
-        FadeOut();
-
-        yield return new WaitForSeconds(2.5f);
-        Debug.Log("Here3");
-
-        currentScene = SceneManager.GetActiveScene();
-        currentSceneName = currentScene.name;
-        SceneManager.LoadScene(currentSceneName);
     }
 
 
