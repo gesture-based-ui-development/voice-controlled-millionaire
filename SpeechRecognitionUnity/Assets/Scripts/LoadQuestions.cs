@@ -59,6 +59,7 @@ public class LoadQuestions : MonoBehaviour
         // Set the text
         allQuestions = loadQuestions();
         int randomNum = Random.Range(1, 500);
+        soundController.letsPlay();
 
         for (int i = 0; i < 10; i++)
         {
@@ -83,7 +84,7 @@ public class LoadQuestions : MonoBehaviour
 
     Question[] loadQuestions()
     {
-        SoundManager.Instance.PlayStart();
+        //SoundManager.Instance.PlayStart();
         // Read the json and load it into a string
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
         jsonFromFile = File.ReadAllText(filePath);
@@ -101,6 +102,7 @@ public class LoadQuestions : MonoBehaviour
         //{
          //   soundController.letsPlay();
         //}
+        soundController.playEasyBackgroundMusic();
 
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
         answerAText = GameObject.Find("AText").GetComponent<TMP_Text>();
@@ -142,9 +144,9 @@ public class LoadQuestions : MonoBehaviour
 
         if (word.ToLower() == currentQuestion.answer.ToLower())
         {
-
+            soundController.playRightAnswer();
             //  soundController.playCorrect();
-            SoundManager.Instance.PlayCorrect();
+            //SoundManager.Instance.PlayCorrect();
             Debug.Log("Answer correct.");
 
          //   StartCoroutine(AdvanceToNextQuestion());
@@ -155,14 +157,15 @@ public class LoadQuestions : MonoBehaviour
         {
             // Play the correct sound effect.
             //  soundController.playCorrect();
-            SoundManager.Instance.PlayIncorrect();
-
+            //SoundManager.Instance.PlayIncorrect();
+            soundController.playWrongAnswer();
             Debug.Log("Incorrect answer");
             sceneManager.LoadMainMenu();
         }
 
 
     }//checkAnswer
+
 
 }
 
