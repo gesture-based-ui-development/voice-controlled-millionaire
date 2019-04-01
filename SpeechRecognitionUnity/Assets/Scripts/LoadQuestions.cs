@@ -35,7 +35,7 @@ public class LoadQuestions : MonoBehaviour
     public Question[] allQuestions;
 
     // String variables
-    private string gameDataFileName = "questions.json";
+    private string gameDataFileName = "questions2.json";
     private string jsonString;
     private string jsonFromFile;
 
@@ -83,13 +83,13 @@ public class LoadQuestions : MonoBehaviour
 
         // Set the text
         allQuestions = loadQuestions();
-        int randomNum = Random.Range(1, 500);
+        int randomNum = Random.Range(1, 12);
         //soundController.letsPlay();
 
         for (int i = 0; i < 10; i++)
         {
             tenQuestionArray.Add(allQuestions[randomNum]);
-            randomNum = Random.Range(1, 500);
+            randomNum = Random.Range(1, 12);
         }
 
         StartCoroutine(advanceToNextQuestion(3f));

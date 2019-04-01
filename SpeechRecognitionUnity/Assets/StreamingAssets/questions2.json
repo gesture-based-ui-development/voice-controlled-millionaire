@@ -1,0 +1,107 @@
+{
+  "questions":
+  [
+    {
+      "question": "A flashing red traffic light signifies that a driver should do what?",
+      "A": "stop",
+      "B": "speed up",
+      "C": "proceed with caution",
+      "D": "honk the horn",
+      "answer": "A"
+    },{
+      "question": "A pita is a type of what?",
+      "A": "fresh fruit",
+      "B": "flat bread",
+      "C": "French tart",
+      "D": "friend bean dip",
+      "answer": "B"
+    }, {
+      "question": "A portrait that comically exaggerates a person's physical traits is called a what?",
+      "A": "landscape",
+      "B": "caricature",
+      "C": "still life",
+      "D": "Impressionism",
+      "answer": "B"
+    },
+    {
+      "question": "A triptych is a work of art that is painted on how many panels?",
+      "A": "two",
+      "B": "three",
+      "C": "five",
+      "D": "eight",
+      "answer": "B"
+    },  {
+      "question": "According to legend, in what country are you most likely to meet a leprechaun?",
+      "A": "Ireland",
+      "B": "Poland",
+      "C": "Greenland",
+      "D": "Scotland",
+      "answer": "A"
+    },  {
+      "question": "According to the popular saying, what should you do 'when in Rome'?",
+      "A": "watch your wallet",
+      "B": "see the Coliseum",
+      "C": "as the Romans do",
+      "D": "don't drink the water",
+      "answer": "C"
+    },
+    {
+      "question": "According to the title of a popular children's TV show, what color is Bear's big house?",
+      "A": "red",
+      "B": "green",
+      "C": "purple",
+      "D": "blue",
+      "answer": "D"
+    }, {
+      "question": "Backgammon is a how many player game?",
+      "A": "Two",
+      "B": "Three",
+      "C": "Four",
+      "D": "Six",
+      "answer": "A"
+    }, {
+      "question": "By what collective name do Christians refer to God the Father, God the Son and the Holy Ghost?",
+      "A": "the Trio",
+      "B": "the Troika",
+      "C": "the Triumvirate",
+      "D": "the Trinity",
+      "answer": "D"
+    },
+    {
+      "question": "Cheddar cheese got its name from a village in what country?",
+      "A": "England",
+      "B": "France",
+      "C": "Switzerland",
+      "D": "Denmark",
+      "answer": "A"
+    },
+    {
+      "question": "Elephant tusks are made of what material?",
+      "A": "coral",
+      "B": "ivory",
+      "C": "bone",
+      "D": "calcium",
+      "answer": "B"
+    },
+    {
+      "question": "For a man and woman on a date, 'dutch treat' means what?",
+      "A": "the man pays",
+      "B": "the woman pays",
+      "C": "the Dutch pay",
+      "D": "each pays their own way",
+      "answer": "D"
+    },
+    {
+      "question": "From 1971 to 1997, the Democratic Republic of Congo was known as what?",
+      "A": "Zaire",
+      "B": "Angola",
+      "C": "Rhodesia",
+      "D": "Belgian Congo",
+      "answer": "A"
+    }
+  ]
+}
+  
+   
+
+
