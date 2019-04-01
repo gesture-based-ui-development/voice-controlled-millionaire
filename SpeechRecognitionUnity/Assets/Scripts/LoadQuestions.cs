@@ -310,7 +310,5 @@ public class LoadQuestions : MonoBehaviour
         Debug.Log("Incorrect answer");
         sceneManager.LoadMainMenu();
     }
-
-
 }
 
