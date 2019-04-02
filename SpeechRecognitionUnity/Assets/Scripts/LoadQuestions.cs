@@ -310,5 +310,10 @@ public class LoadQuestions : MonoBehaviour
         Debug.Log("Incorrect answer");
         sceneManager.LoadMainMenu();
     }
+
+    public void helperFunction(Image imageToFlash, string word)
+    {
+        StartCoroutine(flashSelected(imageToFlash, word));
+    }
 }
 
