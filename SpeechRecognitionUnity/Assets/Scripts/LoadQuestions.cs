@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
+using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Question
@@ -126,14 +125,36 @@ public class LoadQuestions : MonoBehaviour
         //{
         //   soundController.letsPlay();
         //}
-        if (questionLevel <= 3)
+
+
+        // Play a different audio clip corresponding to the diffuculty level.
+        if (questionLevel <= 4)
         {
             soundController.playEasyBackgroundMusic();
         }
-        if (questionLevel > 3)
+        else if (questionLevel <= 9)
+        {
+            soundController.Play32000Sound();
+        }
+        else if (questionLevel == 10)
+        {
+            soundController.Play64000Sound();
+        }
+        else if (questionLevel <= 12)
+        {
+            soundController.Play250000Sound();
+        }
+        else if (questionLevel == 13)
+        {
+            soundController.Play500000Sound();
+        }
+        else
         {
             soundController.playHardBackgroundMusic();
         }
+
+
+
 
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
         answerAText = GameObject.Find("AText").GetComponent<TMP_Text>();
@@ -275,7 +296,7 @@ public class LoadQuestions : MonoBehaviour
             questionLevel++;
             StartCoroutine(flashCorrect(imageToFlash));
         }
-        else if(currentQuestion.answer.ToLower() != word.ToLower())
+        else if (currentQuestion.answer.ToLower() != word.ToLower())
         {
             StartCoroutine(flashIncorrect(imageToFlash));
         }
