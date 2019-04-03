@@ -5,6 +5,25 @@ BSc in Computing in Software Development Gesture Based User Interface Developmen
 # Presentation
 https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/
 
+## Sound system
+| Level    | Sound clip    | 
+| --------|---------|-------|
+| 15  |1000000_sound  | 
+| 14  |50000_sound  | 
+| 13  |250000_sound  | 
+| 12  |250000_sound  | 
+| 11  |64000_sound  | 
+| 10  |32000_sound  | 
+| 9  |32000_sound  | 
+| 8  |32000_sound  | 
+| 7  |32000_sound  | 
+| 6  |32000_sound  | 
+| 5  |1000_sound  | 
+| 4  |1000_sound  | 
+| 3  |1000_sound  | 
+| 2  |1000_sound  | 
+| 1  |1000_sound  | 
+
 
 ## Purpose of the application– 
 design of the application including the screens of the user interface and how it works.  The application can be an experimentation process for you, testing how pieces of hardware could interact or be combined with gestures.  You don’t have to solve the world economic crisis just yet.  
