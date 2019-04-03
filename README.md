@@ -5,6 +5,7 @@ BSc in Computing in Software Development Gesture Based User Interface Developmen
 # Presentation
 https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/
 
+
 ## Purpose of the application– 
 design of the application including the screens of the user interface and how it works.  The application can be an experimentation process for you, testing how pieces of hardware could interact or be combined with gestures.  You don’t have to solve the world economic crisis just yet.  
 

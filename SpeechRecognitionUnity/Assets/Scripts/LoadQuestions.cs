@@ -246,12 +246,14 @@ public class LoadQuestions : MonoBehaviour
         imageToFlash.color = new Color32(255, 165, 0, 255);
         yield return new WaitForSeconds(3);
 
+        /*
         if (currentQuestion.answer.ToLower() == word.ToLower())
         {
             soundController.playRightAnswer();
             questionLevel++;
             StartCoroutine(flashCorrect(imageToFlash));
         }
+        
         if (currentQuestion.answer.ToLower() == word.ToLower())
         {
             soundController.playRightAnswer();
@@ -265,6 +267,8 @@ public class LoadQuestions : MonoBehaviour
             StartCoroutine(flashCorrect(imageToFlash));
 
         }
+       
+     */
         if (currentQuestion.answer.ToLower() == word.ToLower())
         {
             soundController.playRightAnswer();
