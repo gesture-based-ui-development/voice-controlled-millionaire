@@ -94,7 +94,6 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 if (answerIsFinal)
                 {
                     // Stop the finalSOund
-                    soundController.stopFinalSound();
 
                     Debug.Log("[Final Answer test] Is that your final answer:" + word);
                     Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);

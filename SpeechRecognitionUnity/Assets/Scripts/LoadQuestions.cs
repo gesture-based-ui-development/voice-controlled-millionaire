@@ -292,6 +292,7 @@ public class LoadQuestions : MonoBehaviour
      */
         if (currentQuestion.answer.ToLower() == word.ToLower())
         {
+            soundController.stopFinalSound();
             soundController.playRightAnswer();
             questionLevel++;
             StartCoroutine(flashCorrect(imageToFlash));
@@ -320,6 +321,8 @@ public class LoadQuestions : MonoBehaviour
     }
     IEnumerator flashIncorrect(Image imageToFlash)
     {
+        soundController.stopFinalSound();
+
         soundController.playWrongAnswer();
 
         yield return new WaitForSeconds(0.5f);
