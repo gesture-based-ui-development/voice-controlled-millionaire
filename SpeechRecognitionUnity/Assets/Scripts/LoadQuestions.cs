@@ -295,7 +295,11 @@ public class LoadQuestions : MonoBehaviour
             soundController.stopFinalSound();
             soundController.playRightAnswer();
             questionLevel++;
+
+
             StartCoroutine(flashCorrect(imageToFlash));
+            // here is were we must implement a pop up to show money board as level increases
+            Debug.Log("[DEBUG] Correct answer you have now reached level :" + (questionLevel + 1));
         }
         else if (currentQuestion.answer.ToLower() != word.ToLower())
         {
