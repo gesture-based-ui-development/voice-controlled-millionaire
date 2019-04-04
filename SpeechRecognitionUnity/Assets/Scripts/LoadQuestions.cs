@@ -88,14 +88,14 @@ public class LoadQuestions : MonoBehaviour
 
         // Set the text
         allQuestions = loadQuestions();
-        int randomNum = Random.Range(1, 16);
+        int randomNum = Random.Range(1, 500);
         questionLevel = 0; 
         //soundController.letsPlay();
 
         for (int i = 0; i < 15; i++)
         {
             fifteenQuestionArray.Add(allQuestions[randomNum]);
-            randomNum = Random.Range(1, 16);
+            randomNum = Random.Range(1, 500);
         }
 
         StartCoroutine(advanceToNextQuestion(3f));
