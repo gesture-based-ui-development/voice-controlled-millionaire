@@ -18,6 +18,7 @@ public class SpeechRecognitionEngine : MonoBehaviour
     // Need to save the word as final answer word.
     protected string finalAnswerWord = "";
     protected bool answerIsFinal = false;
+    SoundController soundController = new SoundController();
 
     SceneManagement sceneManager = new SceneManagement();
     //LoadQuestions loadQuestion = new LoadQuestions();
@@ -48,6 +49,13 @@ public class SpeechRecognitionEngine : MonoBehaviour
         WordChecker();
     }
 
+
+    /**
+    * Run analysis on current word recognised.
+    * Takes in the word entered by user and saves it. If 'a','b','c','d' its added to finalAnswerWord.
+    * If word is 'yes' or 'final answer' finalAnswerWord is used to play trhe question. 
+    * Also controls menu inputs.
+     */
     public void WordChecker()
     {
         switch (word)
@@ -56,21 +64,27 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
+                soundController.playFinalSound();
                 break;
             case "b":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
+                soundController.playFinalSound();
+
                 break;
             case "c":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
+                soundController.playFinalSound();
+
                 break;
             case "d":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
+                soundController.playFinalSound();
 
                 break;
             case "quit":
@@ -79,6 +93,9 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 // finalAnswerWord = word;
                 if (answerIsFinal)
                 {
+                    // Stop the finalSOund
+                    soundController.stopFinalSound();
+
                     Debug.Log("[Final Answer test] Is that your final answer:" + word);
                     Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
                     loadQuestion.checkAnswer(finalAnswerWord);
@@ -89,6 +106,8 @@ public class SpeechRecognitionEngine : MonoBehaviour
             case "final answer":
                 if (answerIsFinal)
                 {
+                    soundController.stopFinalSound();
+
                     Debug.Log("[Final Answer test] Is that your final answer:" + word);
                     Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
                     loadQuestion.checkAnswer(finalAnswerWord);
@@ -97,6 +116,8 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 }
                 break;
             case "no":
+                soundController.stopFinalSound();
+
                 Debug.Log("[Final Answer test] Is that your final answer:" + word);
 
                 answerIsFinal = false;

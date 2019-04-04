@@ -16,10 +16,11 @@ public class SoundController : MonoBehaviour
     public static AudioSource sound_250000;
     public static AudioSource sound_500000;
 
+    public static AudioSource sound_final;
     void Awake()
     {
         letsPlayAudio = GameObject.Find("LetsPlay").GetComponent<AudioSource>();
-        
+
         rightAnswerAudio = GameObject.Find("CorrectAnswer").GetComponent<AudioSource>();
         wrongAnswerAudio = GameObject.Find("WrongAnswer").GetComponent<AudioSource>();
 
@@ -30,6 +31,9 @@ public class SoundController : MonoBehaviour
         sound_250000 = GameObject.Find("250000_sound").GetComponent<AudioSource>();
         sound_500000 = GameObject.Find("500000_sound").GetComponent<AudioSource>();
         hardBackgroundMusic = GameObject.Find("hardBackgroundMusic").GetComponent<AudioSource>();
+
+        // Sound effects for final answer
+        sound_final = GameObject.Find("finalAnswer_sound").GetComponent<AudioSource>();
     }
 
     void Start()
@@ -41,13 +45,17 @@ public class SoundController : MonoBehaviour
     {
         letsPlayAudio.Play();
     }
-  
+
     public void playRightAnswer()
     {
+        sound_final.Stop();
+
         rightAnswerAudio.Play();
     }
     public void playWrongAnswer()
     {
+        sound_final.Stop();
+
         wrongAnswerAudio.Play();
     }
     // =================================== Background sounds for different level questions. 
@@ -104,5 +112,21 @@ public class SoundController : MonoBehaviour
     {
         sound_500000.Stop();
         hardBackgroundMusic.Play();
+    }
+
+    /**
+    * Sound effect for final answer.
+    * Will play in loop until answer chosen.
+    */
+    public void playFinalSound()
+    {
+        easyBackgroundMusic.Stop();
+        // sound_500000.Stop();
+        sound_final.Play();
+    }
+    public void stopFinalSound()
+    {
+        sound_final.Stop();
+
     }
 }
