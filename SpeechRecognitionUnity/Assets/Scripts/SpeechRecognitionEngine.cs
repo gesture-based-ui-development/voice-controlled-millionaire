@@ -97,8 +97,8 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 // finalAnswerWord = word;
                 if (answerIsFinal)
                 {
-                    // Stop the finalSOund
-
+                    // moved to when question is validated
+                    //soundController.stopFinalSound();
                     Debug.Log("[Final Answer test] Is that your final answer:" + word);
                     Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
                     loadQuestion.checkAnswer(finalAnswerWord);
@@ -109,7 +109,8 @@ public class SpeechRecognitionEngine : MonoBehaviour
             case "final answer":
                 if (answerIsFinal)
                 {
-                    soundController.stopFinalSound();
+                    // moved to when question is validated
+                    //soundController.stopFinalSound();
 
                     Debug.Log("[Final Answer test] Is that your final answer:" + word);
                     Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
