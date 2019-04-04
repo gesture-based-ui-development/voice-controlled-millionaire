@@ -6,6 +6,7 @@ public class SpeechRecognitionEngine : MonoBehaviour
 {
     // Variables
     private string[] keywords = new string[] { "a", "b", "c", "d", "quit", "pause", "new game", "yes", "no", "final answer" };
+
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     public Text results;
     public Image target;
@@ -41,7 +42,9 @@ public class SpeechRecognitionEngine : MonoBehaviour
     private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         word = args.text;
-        results.text = "You said: <b>" + word + "</b>";
+        results.text = "You said: <b>" + word + "</b> ";
+
+
         WordChecker();
     }
 
@@ -50,92 +53,101 @@ public class SpeechRecognitionEngine : MonoBehaviour
         switch (word)
         {
             case "a":
-                if (answerIsFinal)
-                {
-                    loadQuestion.checkAnswer(word);
-                }
-
-                break;
-            case "b":
-                if (answerIsFinal)
-                {
-                    loadQuestion.checkAnswer(word);
-                }
-
-                break;
-            case "c":
-                if (answerIsFinal)
-                {
-                    loadQuestion.checkAnswer(word);
-                }
-
-                break;
-            case "d":
-                if (answerIsFinal)
-                {
-                    loadQuestion.checkAnswer(word);
-                }
-
-                break;
-
-            case "quit":
-                break;
-            case "yes":
+                Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
                 break;
-            case "final answer":
+            case "b":
+                Debug.Log("[Final Answer test] You first answer is :" + word);
+                finalAnswerWord = word;
                 answerIsFinal = true;
                 break;
+            case "c":
+                Debug.Log("[Final Answer test] You first answer is :" + word);
+                finalAnswerWord = word;
+                answerIsFinal = true;
+                break;
+            case "d":
+                Debug.Log("[Final Answer test] You first answer is :" + word);
+                finalAnswerWord = word;
+                answerIsFinal = true;
+
+                break;
+            case "quit":
+                break;
+            case "yes":
+                // finalAnswerWord = word;
+                if (answerIsFinal)
+                {
+                    Debug.Log("[Final Answer test] Is that your final answer:" + word);
+                    Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
+                    loadQuestion.checkAnswer(finalAnswerWord);
+                    answerIsFinal = false;
+                }
+
+                break;
+            case "final answer":
+                if (answerIsFinal)
+                {
+                    Debug.Log("[Final Answer test] Is that your final answer:" + word);
+                    Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
+                    loadQuestion.checkAnswer(finalAnswerWord);
+                    answerIsFinal = false;
+
+                }
+                break;
             case "no":
+                Debug.Log("[Final Answer test] Is that your final answer:" + word);
+
                 answerIsFinal = false;
                 break;
             case "new game":
                 sceneManager.StartGame();
                 break;
-/*
-            case "a":
-                loadQuestion.checkAnswer(word);
-                break;
-            case "b":
-                loadQuestion.checkAnswer(word);
-                break;
-            case "c":
-                loadQuestion.checkAnswer(word);
-                break;
-            case "d":
-                .checkAnswer(word);
-                break;
+                /*
+                            case "a":
+                                loadQuestion.checkAnswer(word);
+                                break;
+                            case "b":
+                                loadQuestion.checkAnswer(word);
+                                break;
+                            case "c":
+                                loadQuestion.checkAnswer(word);
+                                break;
+                            case "d":
+                                .checkAnswer(word);
+                                break;
 
-            case "quit":
-                break;
-                break;
-            case "new game":
-                sceneManager.StartGame();
-                break;
+                            case "quit":
+                                break;
+                                break;
+                            case "new game":
+                                sceneManager.StartGame();
+                                break;
 
-*/
+                */
         }
-        }
-        private void OnApplicationQuit()
+    }
+    private void OnApplicationQuit()
+    {
+        if (recognizer != null && recognizer.IsRunning)
         {
-            if (recognizer != null && recognizer.IsRunning)
-            {
-                recognizer.OnPhraseRecognized -= Recognizer_OnPhraseRecognized;
-                recognizer.Stop();
-            }
+            recognizer.OnPhraseRecognized -= Recognizer_OnPhraseRecognized;
+            recognizer.Stop();
         }
+    }
 
-        /*
-         * Prompt yes/no button dialog to confirm if final answwer
-        */
-        private void IsFinalAnswer(string word)
-        {
-            // if the answer is yes
-            // then loadQuestion.checkAnswer(word)
-            // else take in another word
+    /*
+     * Prompt yes/no button dialog to confirm if final answwer
+    */
+    private void IsFinalAnswer(string word)
+    {
 
-        }
-
+        // if the answer is yes
+        // then loadQuestion.checkAnswer(word)
+        // else take in another word
 
     }
+
+
+}
