@@ -5,33 +5,44 @@ using UnityEngine.Windows.Speech;
 public class SpeechRecognitionEngine : MonoBehaviour
 {
     // Variables
-    private string[] keywords = new string[] { "a", "b", "c", "d", "quit", "pause", "new game", "yes", "no", "final answer", "show scoreboard", "Scoreboard"};
+    private string[] keywords = new string[] { "a", "b", "c", "d", "pause", "yes", "no", "final answer", "show scoreboard", "scoreboard", "score", "main menu"};
 
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     public Text results;
     public Image target;
-    static PhraseRecognizer recognizer;
+    public PhraseRecognizer recognizer;
     protected string word = "";
 
     public int questionsRight;
+    GameObject finalAnswerPrompt;
 
     // Need to save the word as final answer word.
     protected string finalAnswerWord = "";
     public static bool answerIsFinal = false;
     SoundController soundController = new SoundController();
-
     SceneManagement sceneManager = new SceneManagement();
     ScoreboardScript scoreboardScript;
     LoadQuestions loadQuestion;
 
     private void Start()
     {
+        finalAnswerPrompt = GameObject.FindGameObjectWithTag("FinalAnswerStuff");
+
+        if (finalAnswerPrompt != null)
+        {
+            finalAnswerPrompt.SetActive(false);
+        }
+
         loadQuestion = gameObject.AddComponent(typeof(LoadQuestions)) as LoadQuestions;
         scoreboardScript = gameObject.AddComponent(typeof(ScoreboardScript)) as ScoreboardScript;
 
         if (keywords != null)
         {
-            recognizer = new KeywordRecognizer(keywords, confidence);
+            if (recognizer == null)
+            {
+                recognizer = new KeywordRecognizer(keywords, confidence);
+
+            }
             recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
             recognizer.Start();
         }
@@ -45,8 +56,6 @@ public class SpeechRecognitionEngine : MonoBehaviour
     {
         word = args.text;
         results.text = "You said: <b>" + word + "</b> ";
-
-
         WordChecker();
     }
 
@@ -66,36 +75,49 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 finalAnswerWord = word;
                 answerIsFinal = true;
                 soundController.playFinalSound();
+                finalAnswerPrompt.SetActive(true);
                 break;
             case "b":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
                 soundController.playFinalSound();
+                finalAnswerPrompt.SetActive(true);
+
                 break;
             case "c":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
+
                 soundController.playFinalSound();
+                finalAnswerPrompt.SetActive(true);
                 break;
             case "d":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
                 soundController.playFinalSound();
+                finalAnswerPrompt.SetActive(true);
                 break;
             case "show scoreboard":
-                scoreboardScript.showScoreboard(3f);
+                StartCoroutine(scoreboardScript.showScoreboard(3f));
                 break;
             case "scoreboard":
-                scoreboardScript.showScoreboard(3f);
-                break;     
+                StartCoroutine(scoreboardScript.showScoreboard(3f));
+                break;
+            case "main menu":
+                loadQuestion.resetQuestions();
+                sceneManager.LoadMainMenu();
+                break;
+            case "score":
+                StartCoroutine(scoreboardScript.showScoreboard(3f));
+                break;
             case "quit":
                 break;
             case "yes":
                 // finalAnswerWord = word;
-                if (answerIsFinal)
+                if (answerIsFinal == true)
                 {
                     // moved to when question is validated
                     //soundController.stopFinalSound();
@@ -103,35 +125,34 @@ public class SpeechRecognitionEngine : MonoBehaviour
                     Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
                     loadQuestion.checkAnswer(finalAnswerWord);
                     answerIsFinal = false;
+                    finalAnswerPrompt.SetActive(false);
                 }
-
                 break;
             case "final answer":
-                if (answerIsFinal)
+                if (answerIsFinal == true)
                 {
                     // moved to when question is validated
                     //soundController.stopFinalSound();
-
                     Debug.Log("[Final Answer test] Is that your final answer:" + word);
                     Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
                     loadQuestion.checkAnswer(finalAnswerWord);
                     answerIsFinal = false;
-
+                    finalAnswerPrompt.SetActive(false);
                 }
                 break;
             case "no":
                 soundController.stopFinalSound();
-
                 Debug.Log("[Final Answer test] Is that your final answer:" + word);
-
                 answerIsFinal = false;
+                finalAnswerPrompt.SetActive(false);
+                soundController.playEasyBackgroundMusic();
                 break;
             case "new game":
                 sceneManager.StartGame();
                 break;
         }
     }
-    private void OnApplicationQuit()
+    public void OnApplicationQuit()
     {
         if (recognizer != null && recognizer.IsRunning)
         {
@@ -151,6 +172,7 @@ public class SpeechRecognitionEngine : MonoBehaviour
         // else take in another word
 
     }
+   
 
 
 }

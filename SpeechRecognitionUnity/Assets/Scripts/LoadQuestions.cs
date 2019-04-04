@@ -51,7 +51,6 @@ public class LoadQuestions : MonoBehaviour
     public Image bBoxImage;
     public Image cBoxImage;
     public Image dBoxImage;
-
     // Misc. variables
     public static int questionLevel = 0;
 
@@ -62,10 +61,19 @@ public class LoadQuestions : MonoBehaviour
 
     void Awake()
     {
+
         aBoxImage = GameObject.Find("A").GetComponent<Image>();
+        aBoxImage.color = new Color32(0, 0, 0, 255);
         bBoxImage = GameObject.Find("B").GetComponent<Image>();
+        bBoxImage.color = new Color32(0, 0, 0, 255);
+
         cBoxImage = GameObject.Find("C").GetComponent<Image>();
+        cBoxImage.color = new Color32(0, 0, 0, 255);
+
+
         dBoxImage = GameObject.Find("D").GetComponent<Image>();
+        dBoxImage.color = new Color32(0, 0, 0, 255);
+
     }
 
     // Use this for initialization
@@ -77,14 +85,11 @@ public class LoadQuestions : MonoBehaviour
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
         soundController.letsPlay();
 
-        aBoxImage.color = new Color32(0, 0, 0, 255);
-        bBoxImage.color = new Color32(0, 0, 0, 255);
-        cBoxImage.color = new Color32(0, 0, 0, 255);
-        dBoxImage.color = new Color32(0, 0, 0, 255);
 
         // Set the text
         allQuestions = loadQuestions();
         int randomNum = Random.Range(1, 16);
+        questionLevel = 0; 
         //soundController.letsPlay();
 
         for (int i = 0; i < 15; i++)
@@ -96,11 +101,7 @@ public class LoadQuestions : MonoBehaviour
         StartCoroutine(advanceToNextQuestion(3f));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    
     string fixJson(string value)
     {
         value = "{\"Questions\":" + value + "}";
@@ -276,12 +277,28 @@ public class LoadQuestions : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         imageToFlash.color = new Color32(255, 0, 0, 255);
         Debug.Log("Incorrect answer");
+        //StartCoroutine(scoreboardScript.showScoreboardAtEnd(5f));
+        resetQuestions();
         sceneManager.LoadMainMenu();
     }
 
     public void helperFunction(Image imageToFlash, string word)
     {
         StartCoroutine(flashSelected(imageToFlash, word));
+    }
+
+    public void resetQuestions()
+    {
+        Debug.Log("Called new game setup func!");
+        int randomNum = Random.Range(1, 500);
+        questionLevel = 0; 
+        fifteenQuestionArray.Clear();        
+
+        for (int i = 0; i < 15; i++)
+        {
+            fifteenQuestionArray.Add(allQuestions[randomNum]);
+            randomNum = Random.Range(1, 500);
+        }
     }
 }
 

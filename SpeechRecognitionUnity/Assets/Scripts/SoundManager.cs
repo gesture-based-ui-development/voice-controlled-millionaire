@@ -36,29 +36,20 @@ public class SoundManager : MonoBehaviour {
     }
 
     // Play a single clip through the sound effects source.
-    public void PlayStart()
+    public void PlayMenu()
     {
         Debug.Log("[SOUND MANAGER]:playStart()");
 
         _audios.clip = audioClipArray[0];
-        _audios.PlayOneShot(_audios.clip);
+     //   _audios.PlayOneShot(_audios.clip);
+        _audios.Play();
     }
-
-    // Play a single clip through the music source.
-    public void PlayCorrect()
+    public void StopMenuMusic()
     {
-        Debug.Log("[SOUND MANAGER]:playCorrect()");
+        Debug.Log("[SOUND MANAGER]:STOP()");
 
-        _audios.clip = audioClipArray[1];
-        _audios.PlayOneShot(_audios.clip);
+        _audios.Stop();
     }
-    // Play a single clip through the music source.
-    public void PlayIncorrect()
-    {
-        Debug.Log("[SOUND MANAGER]:PlayIncorrect()");
 
-        _audios.clip = audioClipArray[2];
-        _audios.PlayOneShot(_audios.clip);
-    }
 
 }
