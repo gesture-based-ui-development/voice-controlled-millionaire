@@ -49,4 +49,13 @@ public class EventHandler : MonoBehaviour
     {
         loadQuestionsClass.helperFunction(dBoxImage, "d");   
     }
+
+    public void setFinalAnswerTrue()
+    {
+        SpeechRecognitionEngine.answerIsFinal = true;
+    }
+    public void setFinalAnswerFalse()
+    {
+        SpeechRecognitionEngine.answerIsFinal = false;
+    }
 }

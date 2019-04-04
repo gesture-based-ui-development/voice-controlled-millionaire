@@ -30,11 +30,12 @@ public class LoadQuestions : MonoBehaviour
     public SceneManagement sceneManager = new SceneManagement();
     public SoundController soundController = new SoundController();
     public static Question currentQuestion = new Question();
-    static List<Question> tenQuestionArray = new List<Question>();
+    static List<Question> fifteenQuestionArray = new List<Question>();
     public Question[] allQuestions;
+    ScoreboardScript scoreboardScript;
 
     // String variables
-    private string gameDataFileName = "questions2.json";
+    private string gameDataFileName = "questions.json";
     private string jsonString;
     private string jsonFromFile;
 
@@ -52,7 +53,7 @@ public class LoadQuestions : MonoBehaviour
     public Image dBoxImage;
 
     // Misc. variables
-    public int questionLevel = 0;
+    public static int questionLevel = 0;
 
     // Dely to move to next question for 3 seconds.
     [SerializeField]
@@ -72,6 +73,7 @@ public class LoadQuestions : MonoBehaviour
     {
         // Play start audio clip on game start.
         // SoundManager.Instance.PlayStart(letsPlay);
+        scoreboardScript = gameObject.AddComponent(typeof(ScoreboardScript)) as ScoreboardScript;
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
         soundController.letsPlay();
 
@@ -82,13 +84,13 @@ public class LoadQuestions : MonoBehaviour
 
         // Set the text
         allQuestions = loadQuestions();
-        int randomNum = Random.Range(1, 12);
+        int randomNum = Random.Range(1, 16);
         //soundController.letsPlay();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
-            tenQuestionArray.Add(allQuestions[randomNum]);
-            randomNum = Random.Range(1, 12);
+            fifteenQuestionArray.Add(allQuestions[randomNum]);
+            randomNum = Random.Range(1, 16);
         }
 
         StartCoroutine(advanceToNextQuestion(3f));
@@ -162,13 +164,13 @@ public class LoadQuestions : MonoBehaviour
         answerCText = GameObject.Find("CText").GetComponent<TMP_Text>();
         answerDText = GameObject.Find("DText").GetComponent<TMP_Text>();
 
-        //currentQuestion = tenQuestionArray[questionLevel];
-        currentQuestion.question = tenQuestionArray[questionLevel].question;
-        currentQuestion.A = tenQuestionArray[questionLevel].A;
-        currentQuestion.B = tenQuestionArray[questionLevel].B;
-        currentQuestion.C = tenQuestionArray[questionLevel].C;
-        currentQuestion.D = tenQuestionArray[questionLevel].D;
-        currentQuestion.answer = tenQuestionArray[questionLevel].answer;
+        //currentQuestion = fifteenQuestionArray[questionLevel];
+        currentQuestion.question = fifteenQuestionArray[questionLevel].question;
+        currentQuestion.A = fifteenQuestionArray[questionLevel].A;
+        currentQuestion.B = fifteenQuestionArray[questionLevel].B;
+        currentQuestion.C = fifteenQuestionArray[questionLevel].C;
+        currentQuestion.D = fifteenQuestionArray[questionLevel].D;
+        currentQuestion.answer = fifteenQuestionArray[questionLevel].answer;
 
         Debug.Log("Correct Answer: " + currentQuestion.answer);
 
@@ -184,7 +186,7 @@ public class LoadQuestions : MonoBehaviour
 
     public void checkAnswer(string word)
     {
-        currentQuestion = tenQuestionArray[questionLevel];
+        currentQuestion = fifteenQuestionArray[questionLevel];
         Debug.Log("Your Word: " + word);
 
         switch (word)
@@ -202,49 +204,6 @@ public class LoadQuestions : MonoBehaviour
                 StartCoroutine(flashSelected(dBoxImage, word));
                 break;
         }
-
-
-        /* if (word.ToLower() == currentQuestion.answer.ToLower())
-        {
-            soundController.playRightAnswer();
-
-            switch (word)
-            {
-                case "a":
-                    break;
-                case "b":
-                    StartCoroutine(flashCorrect(bBoxImage));
-                    break;
-                case "c":
-                    StartCoroutine(flashCorrect(cBoxImage));
-                    break;
-                case "d":
-                    StartCoroutine(flashCorrect(dBoxImage));
-                    break;
-            }
-            //  soundController.playCorrect();
-            //SoundManager.Instance.PlayCorrect();
-
-            //   StartCoroutine(AdvanceToNextQuestion());
-            questionLevel = questionLevel + 1;
-            //StartCoroutine(advanceToNextQuestion(3f));
-            StartCoroutine(advanceToNextQuestion(3f));
-        }
-
-          else
-        {
-            // Play the correct sound effect.
-            //  soundController.playCorrect();
-            //SoundManager.Instance.PlayIncorrect();
-            soundController.playWrongAnswer();
-            Debug.Log("Incorrect answer");
-            sceneManager.LoadMainMenu();
-        }
-        
-         */
-
-
-
     }//checkAnswer
 
     IEnumerator advanceToNextQuestion(float timeToWait)
@@ -267,35 +226,11 @@ public class LoadQuestions : MonoBehaviour
         imageToFlash.color = new Color32(255, 165, 0, 255);
         yield return new WaitForSeconds(3);
 
-        /*
-        if (currentQuestion.answer.ToLower() == word.ToLower())
-        {
-            soundController.playRightAnswer();
-            questionLevel++;
-            StartCoroutine(flashCorrect(imageToFlash));
-        }
-        
-        if (currentQuestion.answer.ToLower() == word.ToLower())
-        {
-            soundController.playRightAnswer();
-            questionLevel++;
-            StartCoroutine(flashCorrect(imageToFlash));
-        }
-        if (currentQuestion.answer.ToLower() == word.ToLower())
-        {
-            soundController.playRightAnswer();
-            questionLevel++;
-            StartCoroutine(flashCorrect(imageToFlash));
-
-        }
-       
-     */
         if (currentQuestion.answer.ToLower() == word.ToLower())
         {
             soundController.stopFinalSound();
             soundController.playRightAnswer();
             questionLevel++;
-
 
             StartCoroutine(flashCorrect(imageToFlash));
             // here is were we must implement a pop up to show money board as level increases
@@ -320,7 +255,8 @@ public class LoadQuestions : MonoBehaviour
         imageToFlash.color = new Color32(124, 252, 0, 255);
         yield return new WaitForSeconds(imageFlashTime);
         imageToFlash.color = new Color32(0, 0, 0, 255);
-        StartCoroutine(advanceToNextQuestion(2f));
+        StartCoroutine(scoreboardScript.showScoreboard(3f));
+        StartCoroutine(advanceToNextQuestion(0.5f));
 
     }
     IEnumerator flashIncorrect(Image imageToFlash)

@@ -5,7 +5,7 @@ using UnityEngine.Windows.Speech;
 public class SpeechRecognitionEngine : MonoBehaviour
 {
     // Variables
-    private string[] keywords = new string[] { "a", "b", "c", "d", "quit", "pause", "new game", "yes", "no", "final answer" };
+    private string[] keywords = new string[] { "a", "b", "c", "d", "quit", "pause", "new game", "yes", "no", "final answer", "show scoreboard", "Scoreboard"};
 
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     public Text results;
@@ -17,16 +17,17 @@ public class SpeechRecognitionEngine : MonoBehaviour
 
     // Need to save the word as final answer word.
     protected string finalAnswerWord = "";
-    protected bool answerIsFinal = false;
+    public static bool answerIsFinal = false;
     SoundController soundController = new SoundController();
 
     SceneManagement sceneManager = new SceneManagement();
-    //LoadQuestions loadQuestion = new LoadQuestions();
+    ScoreboardScript scoreboardScript;
     LoadQuestions loadQuestion;
 
     private void Start()
     {
         loadQuestion = gameObject.AddComponent(typeof(LoadQuestions)) as LoadQuestions;
+        scoreboardScript = gameObject.AddComponent(typeof(ScoreboardScript)) as ScoreboardScript;
 
         if (keywords != null)
         {
@@ -71,22 +72,25 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 finalAnswerWord = word;
                 answerIsFinal = true;
                 soundController.playFinalSound();
-
                 break;
             case "c":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
                 soundController.playFinalSound();
-
                 break;
             case "d":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
                 soundController.playFinalSound();
-
                 break;
+            case "show scoreboard":
+                scoreboardScript.showScoreboard(3f);
+                break;
+            case "scoreboard":
+                scoreboardScript.showScoreboard(3f);
+                break;     
             case "quit":
                 break;
             case "yes":
@@ -124,28 +128,6 @@ public class SpeechRecognitionEngine : MonoBehaviour
             case "new game":
                 sceneManager.StartGame();
                 break;
-                /*
-                            case "a":
-                                loadQuestion.checkAnswer(word);
-                                break;
-                            case "b":
-                                loadQuestion.checkAnswer(word);
-                                break;
-                            case "c":
-                                loadQuestion.checkAnswer(word);
-                                break;
-                            case "d":
-                                .checkAnswer(word);
-                                break;
-
-                            case "quit":
-                                break;
-                                break;
-                            case "new game":
-                                sceneManager.StartGame();
-                                break;
-
-                */
         }
     }
     private void OnApplicationQuit()
