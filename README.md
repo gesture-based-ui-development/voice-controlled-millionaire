@@ -1,6 +1,5 @@
 # GestureBasedUIProject
-A repository for a project implementing 'gesture based' technologies
-BSc in Computing in Software Development Gesture Based User Interface DevelopmentRequirementsWrite up the project under the following headingsincluding all references as evidence of your research.
+This repository contains a project completed for GMIT's Gesture Based URI Development. The project stated that we must _Develop and application with a natural user intrface_.
 
 # Presentation
 https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/
@@ -26,10 +25,34 @@ https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/
 
 
 ## Purpose of the application– 
+The purpose of the application was to design and develope a game  for users who traditionally wouldn't be able to play classic mouse/keyboard games.
+
+In order to complete the project we set out 4 core objectives.
+1. Research voice-recognition gesture technolgies.
+2. Design a solution.
+3. Implement game logic compatable to showcase technolgies.
+4. Present the final product.
+
+## Research
+### Games of this type
+To get a further undertanding of how this technology could be incorporated into a game we conducted research to see how other developers incorporated speech into games. [itch.io](https;// insert link here) published a list of the top voice controlled games available on the windows platform:
+1. OneHand Clapping (User humms). 
+2. Resonance (howl into glass).
+3. ScreamTrain (Just scream).
+4. BooGreedykif (user says boo).
+
+After testing and playing these games we discoverd none of them actually use a proper speech/word recognition sound and work off general patterns. This finding showed us a wide gap in the market for a fun, challanging **voice** controlled game.
+
+Our solution to this issue? A unique voice controlled implementation of the classic **Who Wants To Be A Millionaire**.
+
+### The technology
+This section will contain information on the research conducted for thye technology.
+
+
 design of the application including the screens of the user interface and how it works.  The application can be an experimentation process for you, testing how pieces of hardware could interact or be combined with gestures.  You don’t have to solve the world economic crisis just yet.  
 
 ## Gestures identified
-as appropriate for this application–consider how gestures can be incorporated into the application, providinga justificationfor the ones that you pick.  This is an importantresearch element for the project and needs to explain how the gestures fit into the solution you are creating.
+The game has been configured to be fully functional with just a users voice. Although we did also implement the solution to be fully compatable with mouse input aswell as touch controls so at any time under every circumstance .
 
 ## Hardware used in creating the application–
 You are not limited to the hardware listed above.  If you have your own hardware, or hardware simulator that you wish to use, then feel free.  The purpose of each piece of hardware should be given with a comparison to other options available.
