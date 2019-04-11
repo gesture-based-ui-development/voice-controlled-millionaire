@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+// This class handles the fading in and out of the splash screen
 public class SplashFade : MonoBehaviour
 {
     // Variables
@@ -13,11 +14,6 @@ public class SplashFade : MonoBehaviour
     string currentSceneName;
     public bool isDead;
     public bool isTitleScreen;
-
-    void Update()
-    {
-      
-    }
 
     IEnumerator Start()
     {

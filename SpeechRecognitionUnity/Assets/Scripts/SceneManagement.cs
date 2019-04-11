@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+// Simple scene management class
 public class SceneManagement : MonoBehaviour
 {
     public GameObject MainMenu;

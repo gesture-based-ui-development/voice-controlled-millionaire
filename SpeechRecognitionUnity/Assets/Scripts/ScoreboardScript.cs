@@ -23,8 +23,11 @@ public class ScoreboardScript : MonoBehaviour
     Image scoreboardQ13;
     Image scoreboardQ14;
     Image scoreboardQ15;
+
+    // Instance variables
     LoadQuestions loadQuestions = new LoadQuestions();
     SceneManagement sceneManager = new SceneManagement();
+
     void Awake()
     {
 		scoreboardQ0 = GameObject.Find("MainGameCanvas/Scoreboard/SCORENO").GetComponent<Image>();
@@ -60,14 +63,9 @@ public class ScoreboardScript : MonoBehaviour
 		scoreboardQ13.enabled = false;
 		scoreboardQ14.enabled = false;
 		scoreboardQ15.enabled = false;
-
-        
     }
 
-	void Update()
-	{
-	}
-    // Update is called once per frame
+    // The following IEnumerators handle showing the scoreboard
     public IEnumerator showScoreboard(float timeToShow)
     {
 		Debug.Log("insdie func");
@@ -164,7 +162,6 @@ public class ScoreboardScript : MonoBehaviour
         }
     }
 
-     // Update is called once per frame
     public IEnumerator showScoreboardAtEnd(float timeToShow)
     {
 		Debug.Log("insdie func");

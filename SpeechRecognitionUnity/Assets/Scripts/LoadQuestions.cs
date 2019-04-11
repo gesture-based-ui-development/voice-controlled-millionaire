@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// This class is used to manage the loading of questions from our JSON file as well
+// as generating questions randomly the JSON file
 [System.Serializable]
 public class Question
 {
@@ -51,6 +53,7 @@ public class LoadQuestions : MonoBehaviour
     public Image bBoxImage;
     public Image cBoxImage;
     public Image dBoxImage;
+
     // Misc. variables
     public static int questionLevel = 0;
 
@@ -79,8 +82,6 @@ public class LoadQuestions : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        // Play start audio clip on game start.
-        // SoundManager.Instance.PlayStart(letsPlay);
         scoreboardScript = gameObject.AddComponent(typeof(ScoreboardScript)) as ScoreboardScript;
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
         soundController.letsPlay();
@@ -90,7 +91,6 @@ public class LoadQuestions : MonoBehaviour
         allQuestions = loadQuestions();
         int randomNum = Random.Range(1, 500);
         questionLevel = 0; 
-        //soundController.letsPlay();
 
         for (int i = 0; i < 15; i++)
         {
@@ -110,11 +110,9 @@ public class LoadQuestions : MonoBehaviour
 
     Question[] loadQuestions()
     {
-        //SoundManager.Instance.PlayStart();
         // Read the json and load it into a string
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
         jsonFromFile = File.ReadAllText(filePath);
-        //Debug.Log(jsonString);
 
         // Parse the json into an object
         QuestionList questionList = JsonUtility.FromJson<QuestionList>(jsonFromFile);
@@ -124,12 +122,6 @@ public class LoadQuestions : MonoBehaviour
 
     void generateQuestion()
     {
-        // if (soundController != null)
-        //{
-        //   soundController.letsPlay();
-        //}
-
-
         // Play a different audio clip corresponding to the diffuculty level.
         if (questionLevel <= 4)
         {
@@ -156,16 +148,14 @@ public class LoadQuestions : MonoBehaviour
             soundController.playHardBackgroundMusic();
         }
 
-
-
-
+        // Populate the text fields with the information from the question
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
         answerAText = GameObject.Find("AText").GetComponent<TMP_Text>();
         answerBText = GameObject.Find("BText").GetComponent<TMP_Text>();
         answerCText = GameObject.Find("CText").GetComponent<TMP_Text>();
         answerDText = GameObject.Find("DText").GetComponent<TMP_Text>();
 
-        //currentQuestion = fifteenQuestionArray[questionLevel];
+        // Populate the currentQuestion object with information from the file
         currentQuestion.question = fifteenQuestionArray[questionLevel].question;
         currentQuestion.A = fifteenQuestionArray[questionLevel].A;
         currentQuestion.B = fifteenQuestionArray[questionLevel].B;
@@ -182,8 +172,6 @@ public class LoadQuestions : MonoBehaviour
         answerDText.text = currentQuestion.D;
 
     }
-
-
 
     public void checkAnswer(string word)
     {
@@ -207,8 +195,10 @@ public class LoadQuestions : MonoBehaviour
         }
 
 
-    }//checkAnswer
+    }
 
+
+    // The following IEnumators are used to add delays to events and to progress through the game
     IEnumerator advanceToNextQuestion(float timeToWait)
     {
         //Debug.Log(Time.time);
@@ -284,15 +274,9 @@ public class LoadQuestions : MonoBehaviour
         sceneManager.LoadMainMenu();
     }
 
-
-    public void helperFunction(Image imageToFlash, string word)
-    {
-        StartCoroutine(flashSelected(imageToFlash, word));
-    }
-
+    // When you lose, reset the game state
     public void resetQuestions()
     {
-        Debug.Log("Called new game setup func!");
         int randomNum = Random.Range(1, 500);
         questionLevel = 0; 
         fifteenQuestionArray.Clear();        

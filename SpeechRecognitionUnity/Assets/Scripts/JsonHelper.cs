@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+// This class is responsible for parsing and formatting our JSON file of questions
 public static class JsonHelper
 {
     public static T[] FromJson<T>(string json)

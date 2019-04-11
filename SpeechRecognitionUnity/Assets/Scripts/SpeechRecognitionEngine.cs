@@ -4,21 +4,19 @@ using UnityEngine.Windows.Speech;
 
 public class SpeechRecognitionEngine : MonoBehaviour
 {
-    // Variables
+    // Speech Variables
     private string[] keywords = new string[] { "a", "b", "c", "d", "pause", "yes", "no", "final answer", "show scoreboard", "scoreboard", "score", "main menu"};
-
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     public Text results;
     public Image target;
     public PhraseRecognizer recognizer;
     protected string word = "";
-
     public int questionsRight;
     GameObject finalAnswerPrompt;
-
-    // Need to save the word as final answer word.
     protected string finalAnswerWord = "";
     public static bool answerIsFinal = false;
+
+    // Instance variables
     SoundController soundController = new SoundController();
     SceneManagement sceneManager = new SceneManagement();
     ScoreboardScript scoreboardScript;
@@ -116,11 +114,9 @@ public class SpeechRecognitionEngine : MonoBehaviour
             case "quit":
                 break;
             case "yes":
-                // finalAnswerWord = word;
                 if (answerIsFinal == true)
                 {
                     // moved to when question is validated
-                    //soundController.stopFinalSound();
                     Debug.Log("[Final Answer test] Is that your final answer:" + word);
                     Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
                     loadQuestion.checkAnswer(finalAnswerWord);
@@ -132,7 +128,6 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 if (answerIsFinal == true)
                 {
                     // moved to when question is validated
-                    //soundController.stopFinalSound();
                     Debug.Log("[Final Answer test] Is that your final answer:" + word);
                     Debug.Log("[Final Answer test] Your final answer:" + finalAnswerWord);
                     loadQuestion.checkAnswer(finalAnswerWord);

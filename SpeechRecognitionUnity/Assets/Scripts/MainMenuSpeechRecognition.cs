@@ -2,20 +2,20 @@
 using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
 
+// This class is responsible for handling Speech Recognition within the Main Menu
 public class MainMenuSpeechRecognition : MonoBehaviour
 {
-    // Variables
-    private string[] menuKeywords = new string[] { "play game", "new game", "play", "quit", "exit" };
+    // Instance variables
+    SoundController soundController = new SoundController();
+    SceneManagement sceneManager = new SceneManagement();
 
+    // Speech Variables
+    private string[] menuKeywords = new string[] { "play game", "new game", "play", "quit", "exit" };
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     public Text results;
     public PhraseRecognizer mainMenuRecognizer;
     protected string word = "";
 
-
-    // Need to save the word as final answer word.
-    SoundController soundController = new SoundController();
-    SceneManagement sceneManager = new SceneManagement();
 
     private void Start()
     {

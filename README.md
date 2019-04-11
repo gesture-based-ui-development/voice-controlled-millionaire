@@ -16,8 +16,9 @@ The original goal of the project was to develop a game/application using <b>Gest
 1. [Prerequisites](#Prerequisites)
 2. [Installation](#Installation)
 3. [How to play](#How-to-Play)
-4. [Presentation](#Presentation)
-5. [Documentation](#Documentation)
+4. [Documentation](#Documentation)
+5. [Presentation](#Presentation)
+6. [Research](#Research)
 
 ## Prerequisites
 
@@ -41,14 +42,9 @@ The player must attempt to answer the question correctly. There are 15 questions
 
 A breakdown of the prizes to be won from answering a certain amount of questions can be found below.
 
-![scoreNO](https://user-images.githubusercontent.com/22448079/55954459-a499da80-5c56-11e9-8d7b-63e0808a3de9.png)
 
+<img src="https://user-images.githubusercontent.com/22448079/55954459-a499da80-5c56-11e9-8d7b-63e0808a3de9.png" alt="drawing" width="200"/>
 
-
-
-
-## Presentation
-A presentation style document can be found [here]([Presentation](https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/)), going into a bit more detail on the actual design philosophy and approach taken to development.
 
 
 # Project Overview
@@ -63,8 +59,9 @@ When we were first thinking of ideas for a project, we thought it would be inter
 
 We wanted the game to be <b> accessible</b>, <b>easy to use</b> and most of all <b>FUN!</b>.
 
-Our original idea for a voice controlled game was a puzzle game. We though this idea was interesting but upon doing some testing, when you made a mistake and attempted speech to correct this was very frustrating. Therefore, we wanted a game idea that was not overly complicated gameplay wise but where there was also a compelling reason to use voice.
+Our original idea for a voice controlled game was a puzzle game. We though this idea was interesting but upon doing some testing, when you made a mistake and attempted speech to correct this was very frustrating. Therefore, we wanted a game that was not overly complicated gameplay wise but where there was also a compelling and interesting reason to use voice.
 
+We envisioned a group of people being able to sit back and relax and play the game on a large or small screen together and being able to enjoy the handsfree, minimal setup our game requires.
 
 
 ## Gestures identified
@@ -81,6 +78,10 @@ A list of <i>voice-gestures</i> found in the application are as follows
 Depending on which scene you are in, Settings, Menu, Main Game etc. the user has a list of available voice commands available to them. The user cannot use voice commands found in the Main Menu in the Main Game and vice-versa. We setup the Speech Recognition this way as we did not want the user to experience unexpected behaviour when playing the game.
 
 We understand that the range of <i>voice-gestures</i> available is not huge but we wanted to focus on the actual implementation of these gestures in a gameplay sense rather than simply expanding the list of gestures for the sake of it.
+
+To identify the <i>voice-gestures</i> done by the user, we used Unity's impleentation of Windows 10's Speech Recognition API.  This lead to minimal setup for the user (which can be extremely appealing to a lot of people) and a generally streamlined, lightweight application.
+
+To further progress towards our overall goal of <b>accessibility</b>, we ensured the game was <b>lightweight</b> in it's resource use and that the UI was <b>simple</b> and <b>intuitive</b> to navigate.
 
 ## Hardware used in creating the application
 The only hardware necessary in the application is 
@@ -109,6 +110,11 @@ By setting the confidence level of the API to <b>Low</b>, it meant that the appl
 
 
 
+
+# Presentation
+A presentation style document can be found [here]([Presentation](https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/)), going into a bit more detail on the actual design philosophy and approach taken to development.
+
+
 # Research
 ### Games of this type
 To get a further undertanding of how this technology could be incorporated into a game we conducted research to see how other developers incorporated speech into games. [itch.io](https;// insert link here) published a list of the top voice controlled games available on the windows platform:
@@ -117,7 +123,7 @@ To get a further undertanding of how this technology could be incorporated into 
 3. ScreamTrain (Just scream).
 4. BooGreedykif (user says boo).
 
-After testing and playing these games we discoverd none of them actually use a proper speech/word recognition sound and work off general patterns. This finding showed us a wide gap in the market for a fun, challanging **voice** controlled game.
+After testing and playing these games we discovered none of them actually use a proper speech/word recognition sound and work off general patterns. This finding showed us a wide gap in the market for a fun, challanging **voice** controlled game.
 
 Our solution to this issue? A unique voice controlled implementation of the classic **Who Wants To Be A Millionaire**.
 
