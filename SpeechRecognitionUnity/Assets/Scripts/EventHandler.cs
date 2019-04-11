@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EventHandler : MonoBehaviour
 {
     // Variables
-    LoadQuestions loadQuestionsClass = new LoadQuestions();
+    LoadQuestions loadQuestionsClass;
 
     // Image variables
     public Image aBoxImage;
@@ -17,6 +17,8 @@ public class EventHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        loadQuestionsClass = gameObject.AddComponent(typeof(LoadQuestions)) as LoadQuestions;
+
         // Image variables
         aBoxImage = GameObject.Find("A").GetComponent<Image>();
         bBoxImage = GameObject.Find("B").GetComponent<Image>();
@@ -46,5 +48,14 @@ public class EventHandler : MonoBehaviour
     public void selectD()
     {
         loadQuestionsClass.helperFunction(dBoxImage, "d");   
+    }
+
+    public void setFinalAnswerTrue()
+    {
+        SpeechRecognitionEngine.answerIsFinal = true;
+    }
+    public void setFinalAnswerFalse()
+    {
+        SpeechRecognitionEngine.answerIsFinal = false;
     }
 }
