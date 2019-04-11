@@ -223,7 +223,8 @@ Conclusions are what you have learned from this project and the associated resea
 
 ## References
 - [Million Pound notes](https://web.archive.org/web/20110612081217/http://www.thestage.co.uk/features/feature.php/6991)
--[ Speech Recog Pros and Cons](https://www.itchronicles.com/technology/the-pros-and-cons-of-speech-recognition-and-virtual-assistants/)
+- [Speech Recog Pros and Cons](https://www.itchronicles.com/technology/the-pros-and-cons-of-speech-recognition-and-virtual-assistants/)
+
 ![](https://vignette.wikia.nocookie.net/millionaire/images/6/62/WWTBAMUK.png/revision/latest?cb=20180516174416)
 
 <p align="center">
