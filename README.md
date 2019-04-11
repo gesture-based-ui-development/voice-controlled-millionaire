@@ -1,3 +1,229 @@
+<p align="center">
+<img src="https://i.imgur.com/MtWcb7b.png" width=50%>
+</p>
+
+
+
+
+<center> <h1>GestureBasedUIProject</h1> </center>
+
+This repository contains a project completed for GMIT's Gesture Based URI Development. The project stated that we must _Develop and application with a natural user interface_.
+
+# Presentation
+https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/
+
+
+
+## Purpose of the application– 
+The purpose of the application was to design and develop a game  for users who traditionally wouldn't be able to play classic mouse/keyboard games.
+
+In order to complete the project we set out 4 core objectives.
+1. Research voice-recognition gesture technologies.
+2. Design a solution.
+3. Implement game logic compatible to showcase technologies.
+4. Present the final product.
+
+## Research
+### Initial Research on Gesture Consideration
+Once we initially received the project brief we started looking into our options on what gesture technology to use. We decided it would be best to build an application that showcases the technology rather than developing an over complicated game that would just uses the technology for the sake of it.
+After investigating the powers and functionality of the available technologies we came to the conclusion that a quiz style game contains all the features needed to explore these technologies and their implementations.
+
+We looked into the pros and cons of many gesture devices available to us, such as the Myo Armband, the Xbox Kinect and the Leap motion. After experimenting with some of these devices we felt the frequency of inaccuracy of the readings of the gestures was too high to produce a solid working solution. Another discovery is that a game built on these technologies would be un-useable to anyone with mobility issues thus lowering the market that can enjoy the game.
+
+Further to this we turned our research towards Speech technologies. 
+> For those with mobility restrictions or the visually impaired, speech recognition has always been a big help, extending the accessibility of computer-based technologies to a much wider audience.
+
+The above quote by _William Goddard_ taken from the article _The Pros and Cons of Speech Recognition and Virtual Assistants_ shaped our ideas on the route the project would take. This finding led to the decision  to design and develop a game  for users who traditionally wouldn't be able to play classic mouse/keyboard games.
+
+### Games of this type
+To get a further understanding of how this technology could be incorporated into a game we conducted research to see how other developers incorporated speech into games. [itch.io](https;// insert link here) published a list of the top voice controlled games available on the windows platform:
+1. OneHand Clapping (User humms). 
+2. Resonance (howl into glass).
+3. ScreamTrain (Just scream).
+4. BooGreedykif (user says boo).
+
+After testing and playing these games we discovered none of them actually use a proper speech/word recognition sound and work off general patterns. This finding showed us a wide gap in the market for a fun, challenging **voice** controlled game.
+
+Our solution to this issue? A unique voice controlled implementation of the classic **Who Wants To Be A Millionaire**.
+
+### The technology
+This section will contain information on the research conducted for the technology.
+
+
+design of the application including the screens of the user interface and how it works.  The application can be an experimentation process for you, testing how pieces of hardware could interact or be combined with gestures.  You don’t have to solve the world economic crisis just yet.  
+****
+## Gestures identified
+The game has been configured to be fully functional with just a users voice. Although we did also implement the solution to be fully compatible with mouse input aswel as touch controls so at any time under every circumstance the game is playable.
+Some of commands  identified are as follows:
+
+**Main Menu :**
+- New Game : Starts a new game.
+- Play : Starts a new game.
+- Quit : Closes the application.
+
+**In Question State**
+- a : Selects answer option A as initial choice.
+- b : Selects answer option B as initial choice.
+- c : Selects answer option C as initial choice.
+- d : Selects answer option D as initial choice.
+
+**In Final Answer State**
+- yes : Progress with initial choice.
+- ya : Progress with initial choice.
+- final answer : Progress with initial choice.
+- no : Deselect initial choice.
+
+**In Any Game State**
+- pause : Pauses the game.
+- main menu : Return to main menu.
+- score : show current score board.
+- show scoreboard : show current score board.
+- scoreboard : show current score board.
+***
+## Hardware used in creating the application
+To develop the application we used 3 core
+You are not limited to the hardware listed above.  If you have your own hardware, or hardware simulator that you wish to use, then feel free.  The purpose of each piece of hardware should be given with a comparison to other options available.
+****
+## Software used in creating the application
+To create the application we had to use a variety of different software's available to us to complete numerous tasks
+- **Unity 2018** Game Engine to build the game.
+- **Visual Studio 2017** Code editor to write c# scripts.
+- **Paint.net** Image editing software for designing sprites
+- **Audacity** Audio editor to edit sound clips.
+- **GitHub** Version control.
+
+## Architecture for the solution–
+the full architecture for the solution, including the class diagrams, any data models, communications and distributed elements that you are creating.The architecture must make sense when the gestures and the hardware are combined. Justification is necessary in the documentation for this.You need to include a list of relevant libraries that you used in the project.
+- using UnityEngine.Windows.Speech;
+## Game Screens
+Main Menu          |  Scoreboard
+:-------------------------:|:-------------------------:
+<img src="https://i.imgur.com/2iVItuUl.png">|<img src="https://i.imgur.com/ztPcZFel.png">
+
+Game Screen          |  Final Answer
+:-------------------------:|:-------------------------:
+<img src="https://i.imgur.com/ppg35msl.png">|<img src="https://i.imgur.com/PautO2Ml.png">
+
+Correct Answer          |  Incorrect Answer
+:-------------------------:|:-------------------------:
+<img src="https://i.imgur.com/abt6UfDl.png">|<img src="https://i.imgur.com/D0B2MsPl.png">
+
+## Sound system
+One major element to any game is the sound effects. The sounds used in a game work hand-in-hand in creating drama and increasing tension. After researching the sounds used in the original **Who Wants To Be a Millionaire** TV show  we discovered the musical score was composed professionally by a father and son duo [Keith](https://en.wikipedia.org/wiki/Keith_Strachan) And [Mathew Strachan](https://en.wikipedia.org/wiki/Matthew_Strachan). The _Millionaire_ soundtrack was honoured by the [American Society of Composers, Authors and Publishers](https://www.ascap.com/) and received multiple awards.
+
+For this reason to perfect the game play and the drama portrayed to the user we decided to replicate these sounds to truly add the real feel of playing the game. To achieve this we implemented a Sound Controller into the game. 
+
+At first we created a [Sound Manager](https://github.com/gesture-based-ui-development/voice-controlled-unity-game/blob/master/SpeechRecognitionUnity/Assets/Scripts/SoundManager.cs) singleton class to carry an array of sound clips that would be loaded throughout the game. Initially this worked but as the game expanded in complexity this was causing issues when running alongside the speech recognition and syncing the delay of playing the sounds in co-routines.
+
+To solve this issue we decided to create a static [Sound Controller](https://github.com/gesture-based-ui-development/voice-controlled-unity-game/blob/master/SpeechRecognitionUnity/Assets/Scripts/SoundController.cs) that worked differently. By loading all the sound files on awake we were able to decrease memory usage while also eliminating lag waiting for a sound clip to be loaded before played.
+```c
+void Awake()
+    {
+        letsPlayAudio = GameObject.Find("LetsPlay").GetComponent<AudioSource>();
+
+        rightAnswerAudio = GameObject.Find("CorrectAnswer").GetComponent<AudioSource>();
+        wrongAnswerAudio = GameObject.Find("WrongAnswer").GetComponent<AudioSource>();
+
+        // Background sounds for different level questions.
+        easyBackgroundMusic = GameObject.Find("easyBackgroundMusic").GetComponent<AudioSource>();
+        sound_32000 = GameObject.Find("32000_sound").GetComponent<AudioSource>();
+        sound_64000 = GameObject.Find("64000_sound").GetComponent<AudioSource>();
+        sound_250000 = GameObject.Find("250000_sound").GetComponent<AudioSource>();
+        sound_500000 = GameObject.Find("500000_sound").GetComponent<AudioSource>();
+        hardBackgroundMusic = GameObject.Find("hardBackgroundMusic").GetComponent<AudioSource>();
+
+        // Sound effects for final answer
+        sound_final = GameObject.Find("finalAnswer_sound").GetComponent<AudioSource>();
+    }
+```
+The game sound system has been developed to avoid any silence or pause that may take away from the tension of the gamer. That is from the moment the game is started sounds are continuously played and interchanged depending on the play state.
+
+When Sounds are used:
+- Main Menu - Theme sound (remix)
+- New Game - Intro is played
+- Question - Increasing pitch sound effects as progress though levels to mimic  a heart beat as used in original tv show
+- Final Answer - A low pitch tone is played while waiting for user to confirm final answer
+- Correct Answer - User selects correct answer
+- Incorrect Answer - User selects incorrect answer
+
+| Level    | Sound clip    | 
+| --------|---------|
+| 15  |1000000_sound  | 
+| 14  |500000_sound  | 
+| 13  |250000_sound  | 
+| 12  |250000_sound  | 
+| 11  |64000_sound  | 
+| 10  |32000_sound  | 
+| 9  |32000_sound  | 
+| 8  |32000_sound  | 
+| 7  |32000_sound  | 
+| 6  |32000_sound  | 
+| 5  |1000_sound  | 
+| 4  |1000_sound  | 
+| 3  |1000_sound  | 
+| 2  |1000_sound  | 
+| 1  |1000_sound  | 
+
+
+## File Reading Questions
+The game is based on answering questions so one requirement was that the game would have a large selection of different questions to keep the user engaged. To achieve this the questions are loaded from a ```questions.json``` file. This also benefits future expansion allowing more questions to be added without any adjustment to the project code. Below is a sample of how that file looks with two questions.
+```json
+{
+
+  "questions":[
+    {
+  "question": "A flashing red traffic light signifies that a driver should do what?",
+  "A": "stop",
+  "B": "speed up",
+  "C": "proceed with caution",
+  "D": "honk the horn",
+  "answer": "A"
+}, {
+  "question": "A knish is traditionally stuffed with what filling?",
+  "A": "potato",
+  "B": "creamed corn",
+  "C": "lemon custard",
+  "D": "raspberry jelly",
+  "answer": "A"
+}]
+} 
+```
+The file used currently holds 1500 different choices. Subsequently for each new game 15 questions are picked at random and stored in an array. 
+```csharp
+// Load the questions.
+allQuestions = loadQuestions();
+int randomNum = Random.Range(1, 500);
+questionLevel = 0;
+
+for (int i = 0; i < 15; i++)
+{
+    fifteenQuestionArray.Add(allQuestions[randomNum]);
+    randomNum = Random.Range(1, 500);
+}
+
+/*
+Loads questions from a json file as a String and parses into Question objects.
+Returns an array of Questions
+*/
+Question[] loadQuestions()
+{
+    // Read the json and load it into a string
+    string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
+    jsonFromFile = File.ReadAllText(filePath);
+
+    // Parse the json into an object
+    QuestionList questionList = JsonUtility.FromJson<QuestionList>(jsonFromFile);
+
+    return questionList.questions;
+}
+```
+
+## Conclusions & Recommendations–
+Conclusions are what you have learned from this project and the associated research.  Recommendations are what you would do differently if you were to undertake the project again.  The Reflective Piece–what I learned and “enjoyed”! This gives scope for a critical evaluation of the project and the objective that you tried to achieve
+
+## References
+- [Million Pound notes](https://web.archive.org/web/20110612081217/http://www.thestage.co.uk/features/feature.php/6991)
+-[ Speech Recog Pros and Cons](https://www.itchronicles.com/technology/the-pros-and-cons-of-speech-recognition-and-virtual-assistants/)
 ![](https://vignette.wikia.nocookie.net/millionaire/images/6/62/WWTBAMUK.png/revision/latest?cb=20180516174416)
 
 <p align="center">
