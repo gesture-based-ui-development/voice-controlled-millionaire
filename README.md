@@ -279,6 +279,7 @@ Conclusions are what you have learned from this project and the associated resea
 - [Million Pound notes](https://web.archive.org/web/20110612081217/http://www.thestage.co.uk/features/feature.php/6991)
 - [Speech Recog Pros and Cons](https://www.itchronicles.com/technology/the-pros-and-cons-of-speech-recognition-and-virtual-assistants/)
 
+### LEAVE THIS SECTION BELOW FOR ROUGH WORK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ![](https://vignette.wikia.nocookie.net/millionaire/images/6/62/WWTBAMUK.png/revision/latest?cb=20180516174416)
 
 <p align="center">
@@ -326,14 +327,3 @@ We understand that the range of <i>voice-gestures</i> available is not huge but 
 To identify the <i>voice-gestures</i> done by the user, we used Unity's impleentation of Windows 10's Speech Recognition API.  This lead to minimal setup for the user (which can be extremely appealing to a lot of people) and a generally streamlined, lightweight application.
 
 To further progress towards our overall goal of <b>accessibility</b>, we ensured the game was <b>lightweight</b> in it's resource use and that the UI was <b>simple</b> and <b>intuitive</b> to navigate.
-
-
-
-
-
-
-
-
-
-
-### Technology
