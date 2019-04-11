@@ -1,7 +1,13 @@
-# Who Wants To Be A Millionaire (Voice-Controlled)
-The following repoistory contains the source code and documentation for our voice-controlled implementation of "Who Wants To Be A Millionaire"
+![](https://vignette.wikia.nocookie.net/millionaire/images/6/62/WWTBAMUK.png/revision/latest?cb=20180516174416)
+
+<p align="center">
+  <b>A voice-controlled implementation of the classic quiz game "Who Wants To Be A Millionaire"</b><br>
+</p>
+
 
 # Overview
+The following repoistory contains the source code and documentation for our voice-controlled implementation of "Who Wants To Be A Millionaire". The project stated that we must _Develop and application with a natural user intrface_.
+
 As stated above, the project is essentially a voice-controlled implementation of the classic quiz game "Who Wants To Be A Millionaire". 
 
 The original goal of the project was to develop a game/application using <b>Gesture-Based</b> controls. We choise Voice/Speech recognition as our "<i>gesture</i>".
@@ -9,24 +15,39 @@ The original goal of the project was to develop a game/application using <b>Gest
 # Table of Contents
 1. [Prerequisites](#Prerequisites)
 2. [Installation](#Installation)
-3. [Presentation](#Presentation)
+3. [How to play](#How-to-Play)
+4. [Presentation](#Presentation)
+5. [Documentation](#Documentation)
 
-# Prerequisites
+## Prerequisites
 
 * Windows 10
 * Windows Language Packs
 * A microphone <b>OR</b> a mouse
 
-# Installation
+## Installation
 
 * Please ensure you have either downloaded/configured the appropriate language packs inside Windows before attempting to play the game. If you're having trouble with this, please follow this [tutorial on configuring Windows Speech Recognition](https://www.windowscentral.com/how-set-speech-recognition-windows-10)
 
 * To actually run the game, clone/download this repository.
 * The latest/stable build of the game can be found in the <b>Builds</b> folder in the root directory of the project.
-# GestureBasedUIProject
-This repository contains a project completed for GMIT's Gesture Based URI Development. The project stated that we must _Develop and application with a natural user intrface_.
 
-# Presentation
+## How to play
+If you haven't played <i>"Who Wants To Be A Millionaire Before"</i>and don't know how to play, don't worry as the game is simple.
+
+The player is presented with <b>One</b> question and <b>Four</b> questions labeled A,B,C and D.
+
+The player must attempt to answer the question correctly. There are 15 questions in total and the questions will incremently get harder as the game progresses.
+
+A breakdown of the prizes to be won from answering a certain amount of questions can be found below.
+
+![scoreNO](https://user-images.githubusercontent.com/22448079/55954459-a499da80-5c56-11e9-8d7b-63e0808a3de9.png)
+
+
+
+
+
+## Presentation
 A presentation style document can be found [here]([Presentation](https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/)), going into a bit more detail on the actual design philosophy and approach taken to development.
 
 
@@ -36,12 +57,6 @@ A presentation style document can be found [here]([Presentation](https://prezi.c
 3. [Hardware used in creating the application](#Hardware-used-in-creating-the-application)
 4. [Architecture for the solution](#Architecture-for-the-solution)
 5. [Conclusions & Recommendations](#Conclusions-&-Recommendations)
-
-## Purpose of the application
-
-
-## Gestures identified
-
 
 ## Purpose of the application
 When we were first thinking of ideas for a project, we thought it would be interesting to see if we could develop an applicaton that doesn't use a traditional control method (hands). We discussed and researched the viability of a couple of ideas but eventually decided on <b> Windows Speech Recognition</b> as it was something we had never used before as well as being something that wouldn't require any additional expensive hardware or complicated setup.
