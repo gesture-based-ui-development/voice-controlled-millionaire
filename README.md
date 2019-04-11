@@ -5,7 +5,7 @@
 <center> <h1>GestureBasedUIProject</h1> </center>
 
 # Presentation
-A presentation style document can be found [here]([Presentation](https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/)), going into a bit more detail on the actual design philosophy and approach taken to development.
+A presentation style document can be found [here](https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/), going into a bit more detail on the actual design philosophy and approach taken to development.
 
 # Overview
 
