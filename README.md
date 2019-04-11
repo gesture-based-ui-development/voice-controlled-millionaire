@@ -1,21 +1,55 @@
-# GestureBasedUIProject
-A repository for a project implementing 'gesture based' technologies
-BSc in Computing in Software Development Gesture Based User Interface DevelopmentRequirementsWrite up the project under the following headingsincluding all references as evidence of your research.
+# Who Wants To Be A Millionaire (Voice-Controlled)
+The following repoistory contains the source code and documentation for our voice-controlled implementation of "Who Wants To Be A Millionaire"
+
+# Overview
+As stated above, the project is essentially a voice-controlled implementation of the classic quiz game "Who Wants To Be A Millionaire". 
+
+The original goal of the project was to develop a game/application using <b>Gesture-Based</b> controls. We choise Voice/Speech recognition as our "<i>gesture</i>".
+
+# Table of Contents
+1. [Prerequisites](#Prerequisites)
+2. [Installation](#Installation)
+3. [Presentation](#Presentation)
+
+# Prerequisites
+
+* Windows 10
+* Windows Language Packs
+* A microphone <b>OR</b> a mouse
+
+# Installation
+
+* Please ensure you have either downloaded/configured the appropriate language packs inside Windows before attempting to play the game. If you're having trouble with this, please follow this [tutorial on configuring Windows Speech Recognition](https://www.windowscentral.com/how-set-speech-recognition-windows-10)
+
+* To actually run the game, clone/download this repository.
+* The latest/stable build of the game can be found in the <b>Builds</b> folder in the root directory of the project.
 
 # Presentation
-https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/
+A presentation style document can be found [here]([Presentation](https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/)), going into a bit more detail on the actual design philosophy and approach taken to development.
 
-## Purpose of the application– 
-design of the application including the screens of the user interface and how it works.  The application can be an experimentation process for you, testing how pieces of hardware could interact or be combined with gestures.  You don’t have to solve the world economic crisis just yet.  
+
+# Project Overview
+1. [Purpose of the application](#Purpose-of-the-application)
+2. [Gestures identified](#Gestures-identified)
+3. [Hardware used in creating the application](#Hardware-used-in-creating-the-application)
+4. [Architecture for the solution](#Architecture-for-the-solution)
+5. [Conclusions & Recommendations](#Conclusions-&-Recommendations)
+
+## Purpose of the application
+
 
 ## Gestures identified
-as appropriate for this application–consider how gestures can be incorporated into the application, providinga justificationfor the ones that you pick.  This is an importantresearch element for the project and needs to explain how the gestures fit into the solution you are creating.
 
-## Hardware used in creating the application–
-You are not limited to the hardware listed above.  If you have your own hardware, or hardware simulator that you wish to use, then feel free.  The purpose of each piece of hardware should be given with a comparison to other options available.
 
-## Architecture for the solution–
-the full architecture for the solution, including the class diagrams, any data models, communications and distributed elements that you are creating.The architecture must make sense when the gestures and the hardware are combined. Justification is necessary in the documentation for this.You need to include a list of relevant libraries that you used in the project.
+## Hardware used in creating the application
 
-## Conclusions & Recommendations–
-Conclusions are what you have learned from this project and the associated research.  Recommendations are what you would do differently if you were to undertake the project again.  The Reflective Piece–what I learned and “enjoyed”! This gives scope for a critical evaluation of the project and the objective that you tried to achieve
+
+## Architecture for the solution
+
+
+## Conclusions & Recommendations
+
+
+# Research
+
+* [research goes here](test)

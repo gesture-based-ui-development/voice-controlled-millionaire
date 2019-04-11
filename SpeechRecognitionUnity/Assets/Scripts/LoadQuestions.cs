@@ -183,47 +183,6 @@ public class LoadQuestions : MonoBehaviour
         }
 
 
-        /* if (word.ToLower() == currentQuestion.answer.ToLower())
-        {
-            soundController.playRightAnswer();
-
-            switch (word)
-            {
-                case "a":
-                    break;
-                case "b":
-                    StartCoroutine(flashCorrect(bBoxImage));
-                    break;
-                case "c":
-                    StartCoroutine(flashCorrect(cBoxImage));
-                    break;
-                case "d":
-                    StartCoroutine(flashCorrect(dBoxImage));
-                    break;
-            }
-            //  soundController.playCorrect();
-            //SoundManager.Instance.PlayCorrect();
-
-            //   StartCoroutine(AdvanceToNextQuestion());
-            questionLevel = questionLevel + 1;
-            //StartCoroutine(advanceToNextQuestion(3f));
-            StartCoroutine(advanceToNextQuestion(3f));
-        }
-
-          else
-        {
-            // Play the correct sound effect.
-            //  soundController.playCorrect();
-            //SoundManager.Instance.PlayIncorrect();
-            soundController.playWrongAnswer();
-            Debug.Log("Incorrect answer");
-            sceneManager.LoadMainMenu();
-        }
-        
-         */
-
-
-
     }//checkAnswer
 
     IEnumerator advanceToNextQuestion(float timeToWait)
@@ -310,6 +269,7 @@ public class LoadQuestions : MonoBehaviour
         Debug.Log("Incorrect answer");
         sceneManager.LoadMainMenu();
     }
+
 
     public void helperFunction(Image imageToFlash, string word)
     {
