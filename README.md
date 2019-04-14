@@ -1,8 +1,7 @@
 <p align="center">
 <img src="https://i.imgur.com/MtWcb7b.png" width=50%>
+<h1>GestureBasedUIProject</h1>
 </p>
-
-<center> <h1>GestureBasedUIProject</h1> </center>
 
 # Overview
 
