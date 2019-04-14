@@ -66,7 +66,7 @@ The original goal of the project was to develop a game/application using <b>Gest
 
 ****
 
-# Purpose of the application– 
+# Purpose of the application 
 The purpose of the application was to design and develop a game  for users who traditionally wouldn't be able to play classic mouse/keyboard games.
 
 In order to complete the project we set out 4 core objectives.
@@ -356,12 +356,21 @@ A presentation style document can be found [here](https://prezi.com/p/_xs2mrmbsd
 
 ****
 
-## Conclusions & Recommendations–
-Conclusions are what you have learned from this project and the associated research.  Recommendations are what you would do differently if you were to undertake the project again.  The Reflective Piece–what I learned and “enjoyed”! This gives scope for a critical evaluation of the project and the objective that you tried to achieve
+# Conclusions & Recommendations
+The project was enjoyable in many areas, from research & design, to implementation and getting to play with the final solution. 
+
+In terms of research it was very interesting to discover the vast amount of technologies currently available to allow user input into a system, without using the traditional keyboard and mouse approach. It was clearly evident that whilst the choice of games using these technologies is still limited, the amount of implementations are increasing by the day. One astonishing finding we made during our research period was the very small amount of voice controlled games available on the market, as most only worked off sound patterns in contrast to our solution which recognised keywords from a user. From what we could find the main cause for the lack of voice controlled game appears to be related to cross compatibility issues. That is, with so many different libraries, packages and software's used for voice input they all seem to target different platforms as appose to a mutli platform solution. Thus meaning to develop a voice controlled game over many different platforms a different implementation  would have to be adapted for each build. Such as using **Windows Speech Recognition** for Windows and UWP systems and [Mobile Speech Recognition](https://assetstore.unity.com/search?q=speech&q=mobile) to target android an IOS mobile devices.
+
+When looking back at the project from a learning and development approach our knowledge portfolio has expanded in many areas. We gained more hands on experience with Using Unity Game Engine and incorporating third party libraries. Scripting all aspects of the game ourselves we have greatly improved are skill set with **C#**, from using object orientated concepts to ensure a smooth gameplay, to the implementation of **C#** programming techniques such as IEnumerators  to produce co-routines. On top of all this many other skills we put to the test when developing the UI. Creating all our sprites from the ground up we increased our ability to work with image editing software's, producing clean, sizeable and functional sprite sheets. In order to add to the in game tension we used Audio editors and online libaries to pull v   
 
 ****
 
-## References
+# **_Members_**
+[![ForTheBadge built-by-developers](http://ForTheBadge.com/images/badges/built-by-developers.svg)](https://GitHub.com/Naereen/)
+- [Kevin Barry](https://github.com/kbarry91)
+- [Edward Eldridge](https://github.com/EddieEldridge)
+
+# References
 - [Million Pound notes](https://web.archive.org/web/20110612081217/http://www.thestage.co.uk/features/feature.php/6991)
 - [Speech Recog Pros and Cons](https://www.itchronicles.com/technology/the-pros-and-cons-of-speech-recognition-and-virtual-assistants/)
-
+- [Mobile Speech Recognition](https://assetstore.unity.com/search?q=speech&q=mobile)
