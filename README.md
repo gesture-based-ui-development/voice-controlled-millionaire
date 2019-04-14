@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/MtWcb7b.png" width=50%>
 </p>
 
-<h1 align="center">GestureBasedUIProject</h1>
+<h1 align="center">Gesture Based UI Development</h1>
 
 # Overview
 
@@ -197,7 +197,7 @@ In this section we will look at the  architecture for the solution. Using visual
 
 ## Relevant Libraries
 Below is a brief list of the most relevant libraries that were used in the project:
-```c
+```csharp
 using UnityEngine.Windows.Speech;
 using System.Collections;
 using System.Collections.Generic;
