@@ -231,7 +231,7 @@ For this reason to perfect the game play and the drama portrayed to the user we 
 At first we created a [Sound Manager](https://github.com/gesture-based-ui-development/voice-controlled-unity-game/blob/master/SpeechRecognitionUnity/Assets/Scripts/SoundManager.cs) singleton class to carry an array of sound clips that would be loaded throughout the game. Initially this worked but as the game expanded in complexity this was causing issues when running alongside the speech recognition and syncing the delay of playing the sounds in co-routines.
 
 To solve this issue we decided to create a static [Sound Controller](https://github.com/gesture-based-ui-development/voice-controlled-unity-game/blob/master/SpeechRecognitionUnity/Assets/Scripts/SoundController.cs) that worked differently. By loading all the sound files on awake we were able to decrease memory usage while also eliminating lag waiting for a sound clip to be loaded before played.
-```c
+```csharp
 void Awake()
     {
         letsPlayAudio = GameObject.Find("LetsPlay").GetComponent<AudioSource>();
@@ -318,6 +318,7 @@ public class Question
   
 ```
 The file used currently holds 1500 different choices. Subsequently for each new game 15 questions are picked at random and stored in an array. 
+
 ```csharp
 // Load the questions.
 allQuestions = loadQuestions();
