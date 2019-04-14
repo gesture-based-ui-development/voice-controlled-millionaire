@@ -180,7 +180,9 @@ We had some issues with the Speech Recognition having issues detecting certain p
 
 By setting the confidence level of the API to <b>Low</b>, it meant that the application would reject very little phrases and would at least acknowledge and respond with the user's input even if it didn't not recognize what the user was trying to say 100% of the time.
 
-` ConfidenceLevel confidence = ConfidenceLevel.Low`
+```csharp
+public ConfidenceLevel confidence = ConfidenceLevel.Low
+```
 
 ****
 
