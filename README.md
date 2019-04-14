@@ -1,44 +1,72 @@
-  <p align="center">
+<p align="center">
 <img src="https://i.imgur.com/MtWcb7b.png" width=50%>
 </p>
 
 <center> <h1>GestureBasedUIProject</h1> </center>
 
-# Presentation
-A presentation style document can be found [here](https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/), going into a bit more detail on the actual design philosophy and approach taken to development.
-
 # Overview
 
 This repository contains a project completed for GMIT's Gesture Based URI Development. The project stated that we must _Develop and application with a natural user interface_.
-The contents contains the source code and documentation for our voice-controlled implementation of "Who Wants To Be A Millionaire". 
+The contents contains the source code and documentation for our voice-controlled implementation of "Who Wants To Be A Millionaire". This document aims to give the reader an insight into the design and development process under the following categories.
+
+1. Purpose of the application
+2. Gestures identified
+3. Hardware used in creating the application
+4. Architecture for the solution
+5. Conclusions & Recommendations
+
 
 As stated above, the project is essentially a voice-controlled implementation of the classic quiz game "Who Wants To Be A Millionaire". 
 
 The original goal of the project was to develop a game/application using <b>Gesture-Based</b> controls. We choice Voice/Speech recognition as our "<i>gesture</i>".
 
 # Table of Contents
-1. [Prerequisites](#Prerequisites)
-2. [Installation](#Installation)
-3. [How to play](#How-to-Play)
-4. [Documentation](#Documentation)
-5. [Presentation](#Presentation)
-6. [Research](#Research)
 
-## Prerequisites
+- [Overview](#overview)
+- [Table of Contents](#table-of-contents)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Purpose of the application–](#purpose-of-the-application-)
+  * [How to play](#how-to-play)
+- [Research](#research)
+    + [Initial Research on Gesture Consideration](#initial-research-on-gesture-consideration)
+    + [Games of this type](#games-of-this-type)
+- [Gestures identified](#gestures-identified)
+- [Hardware used in creating the application](#hardware-used-in-creating-the-application)
+- [Software used in creating the application](#software-used-in-creating-the-application)
+- [Architecture for the solution–](#architecture-for-the-solution-)
+  * [Game Screens](#game-screens)
+  * [Sound system](#sound-system)
+  * [File Reading Questions](#file-reading-questions)
+- [Testing](#testing)
+    + [Main Menu](#main-menu)
+    + [In Game Scene](#in-game-scene)
+    + [In Game Scene (Final Answer mode)](#in-game-scene--final-answer-mode-)
+- [Presentation](#presentation)
+  * [Conclusions & Recommendations–](#conclusions---recommendations-)
+  * [References](#references)
+
+# Prerequisites
 
 * Windows 10
 * Windows Language Packs
 * A microphone <b>OR</b> a mouse
 
-## Installation
+****
+# Installation
 
-* Please ensure you have either downloaded/configured the appropriate language packs inside Windows before attempting to play the game. If you're having trouble with this, please follow this [tutorial on configuring Windows Speech Recognition](https://www.windowscentral.com/how-set-speech-recognition-windows-10)
+* Please ensure you have either downloaded/configured the appropriate language packs inside Windows before attempting to play the game. If you're having trouble with this, please follow this [tutorial on configuring Windows Speech Recognition](https://www.windowscentral.com/how-set-speech-recognition-windows-10).
 
-* To actually run the game, clone/download this repository.
+* To actually run the game, clone/download this repository. Create an empty directory and navigate to it in CMD. The following command will clone the project to your local machine.
+```bash
+> git clone https://github.com/gesture-based-ui-development/voice-controlled-unity-game.git
+```
+
 * The latest/stable build of the game can be found in the <b>Builds</b> folder in the root directory of the project.
 
+****
 
-## Purpose of the application– 
+# Purpose of the application– 
 The purpose of the application was to design and develop a game  for users who traditionally wouldn't be able to play classic mouse/keyboard games.
 
 In order to complete the project we set out 4 core objectives.
@@ -47,19 +75,28 @@ In order to complete the project we set out 4 core objectives.
 3. Implement game logic compatible to showcase technologies.
 4. Present the final product.
 
+When we were first thinking of ideas for a project, we thought it would be interesting to see if we could develop an application that doesn't use a traditional control method (hands). We discussed and researched the viability of a couple of ideas but eventually decided on <b> Windows Speech Recognition</b> as it was something we had never used before as well as being something that wouldn't require any additional expensive hardware or complicated setup.
+
+We wanted the game to be <b> accessible</b>, <b>easy to use</b> and most of all <b>FUN!</b>.
+
+Our original idea for a voice controlled game was a puzzle game. We though this idea was interesting but upon doing some testing, when you made a mistake and attempted speech to correct this was very frustrating. Therefore, we wanted a game that was not overly complicated gameplay wise but where there was also a compelling and interesting reason to use voice.
+
+We envisioned a group of people being able to sit back and relax and play the game on a large or small screen together and being able to enjoy the handsfree, minimal setup our game requires.
+
 ## How to play
-If you haven't played <i>"Who Wants To Be A Millionaire Before"</i>and don't know how to play, don't worry as the game is simple.
+If you haven't played _Who Wants To Be A Millionaire_ before and don't know how to play, don't worry as the game is simple.
 
-The player is presented with <b>One</b> question and <b>Four</b> questions labeled A,B,C and D.
+The player is presented with <b>One</b> question and <b>Four</b> answers labelled A,B,C and D.
 
-The player must attempt to answer the question correctly. There are 15 questions in total and the questions will incremently get harder as the game progresses.
+The player must attempt to answer the question correctly. After selecting an answer a final answer screen will appear prompting the user to confirm their choice. The correct choice will advance the user to the next question and increase their position on the scoreboard. There are 15 questions in total and the questions will incrementally get harder as the game progresses.
 
 A breakdown of the prizes to be won from answering a certain amount of questions can be found below.
 
-
 <center><img src="https://user-images.githubusercontent.com/22448079/55954459-a499da80-5c56-11e9-8d7b-63e0808a3de9.png" alt="drawing" width="200"/></center>
 
-## Research
+****
+
+# Research
 ### Initial Research on Gesture Consideration
 Once we initially received the project brief we started looking into our options on what gesture technology to use. We decided it would be best to build an application that showcases the technology rather than developing an over complicated game that would just uses the technology for the sake of it.
 After investigating the powers and functionality of the available technologies we came to the conclusion that a quiz style game contains all the features needed to explore these technologies and their implementations.
@@ -76,19 +113,15 @@ To get a further understanding of how this technology could be incorporated into
 1. OneHand Clapping (User humms). 
 2. Resonance (howl into glass).
 3. ScreamTrain (Just scream).
-4. BooGreedykif (user says boo).
+4. BooGreedykid (user says boo).
 
 After testing and playing these games we discovered none of them actually use a proper speech/word recognition sound and work off general patterns. This finding showed us a wide gap in the market for a fun, challenging **voice** controlled game.
 
 Our solution to this issue? A unique voice controlled implementation of the classic **Who Wants To Be A Millionaire**.
 
-### The technology
-This section will contain information on the research conducted for the technology.
-
-
-design of the application including the screens of the user interface and how it works.  The application can be an experimentation process for you, testing how pieces of hardware could interact or be combined with gestures.  You don’t have to solve the world economic crisis just yet.  
 ****
-## Gestures identified
+
+# Gestures identified
 The game has been configured to be fully functional with just a users voice. Although we did also implement the solution to be fully compatible with mouse input aswel as touch controls so at any time under every circumstance the game is playable.
 Some of commands  identified are as follows:
 
@@ -117,7 +150,17 @@ Some of commands  identified are as follows:
 - scoreboard : show current score board.
 ***
 
-## Hardware used in creating the application
+Depending on which scene you are in, Settings, Menu, Main Game etc. the user has a list of available voice commands available to them. The user cannot use voice commands found in the Main Menu in the Main Game and vice-versa. We setup the Speech Recognition this way as we did not want the user to experience unexpected behaviour when playing the game.
+
+We understand that the range of _voice-gestures_ available is not huge but we wanted to focus on the actual implementation of these gestures in a gameplay sense rather than simply expanding the list of gestures for the sake of it.
+
+To identify the _voice-gestures_ recognised by the user, we used Unity's implementation of Windows 10's Speech Recognition API.  This lead to minimal setup for the user (which can be extremely appealing to a lot of people) and a generally streamlined, lightweight application.
+
+To further progress towards our overall goal of <b>accessibility</b>, we ensured the game was <b>lightweight</b> in it's resource use and that the UI was <b>simple</b> and <b>intuitive</b> to navigate.
+
+****
+
+# Hardware used in creating the application
 The only hardware necessary in the application is 
 
 * Mouse
@@ -130,15 +173,15 @@ Attempting to deliver on our original goal of the game being <b>accessible</b> t
 
 A <b>mouse</b> is a standard piece of hardware for a desktop computer and a <b>microphone</b> is a standard piece of hardware for a laptop (webcam+microphone). 
 
-We had some issues with the Speech Recognition having issues detecting certain phrases but we were able to rememedy this by adjusting the [Confidence Level](https://docs.unity3d.com/ScriptReference/Windows.Speech.ConfidenceLevel.html) of the Speech Recogntiion API in Unity.
+We had some issues with the Speech Recognition having issues detecting certain phrases but we were able to remedy this by adjusting the [Confidence Level](https://docs.unity3d.com/ScriptReference/Windows.Speech.ConfidenceLevel.html) of the Speech Recognition API in Unity.
 
 By setting the confidence level of the API to <b>Low</b>, it meant that the application would reject very little phrases and would at least acknowledge and respond with the user's input even if it didn't not recognize what the user was trying to say 100% of the time.
 
 ` ConfidenceLevel confidence = ConfidenceLevel.Low`
 
-
 ****
-## Software used in creating the application
+
+# Software used in creating the application
 To create the application we had to use a variety of different software's available to us to complete numerous tasks
 - **Unity 2018** Game Engine to build the game.
 - **Visual Studio 2017** Code editor to write c# scripts.
@@ -146,7 +189,7 @@ To create the application we had to use a variety of different software's availa
 - **Audacity** Audio editor to edit sound clips.
 - **GitHub** Version control.
 
-## Architecture for the solution–
+# Architecture for the solution–
 the full architecture for the solution, including the class diagrams, any data models, communications and distributed elements that you are creating.The architecture must make sense when the gestures and the hardware are combined. Justification is necessary in the documentation for this.You need to include a list of relevant libraries that you used in the project.
 - using UnityEngine.Windows.Speech;
 ## Game Screens
@@ -271,8 +314,9 @@ Question[] loadQuestions()
     return questionList.questions;
 }
 ```
-***
-## Testing
+****
+
+# Testing
 ### Main Menu
 | Test | Expected Result                                                         | Actual Result                                                           | PASS/FAIL |
 | ----- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | --------- |
@@ -296,67 +340,28 @@ Question[] loadQuestions()
 | Saying ["a","b","c","d"]  | Should select an answer and prompt for final answer |  answer was selected and final answer prompted | **PASS**  |
 
 ### In Game Scene (Final Answer mode)
+| Test | Expected Result                                                         | Actual Result                                                           | PASS/FAIL |
+| ----- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | --------- |
 | Saying "Yes"   | Selects final answer | Final answer selected | **PASS**  |
 | Saying "Final Answer"   | Selects final answer | Final answer selected | **PASS**  |
-| Saying "No"   | deselects final answer | Final answer deselected | **PASS**  |
+| Saying "No"   | Deselects final answer | Final answer deselected | **PASS**  |
 | Select correct answer   | Correct answer highlighted and move to next question | Answer highlighted and new question loaded | **PASS**  |
+| Select correct answer to progress game  | Position on scoreboard should increase | Scoreboard position increased by 1| **PASS**  |
 | Select wrong answer   | Wrong answer highlighted and game ends | Wrong answer highlighted and game ends | **PASS**  |
 
+****
 
+# Presentation
+A presentation style document can be found [here](https://prezi.com/p/_xs2mrmbsdxa/whowantstobeamillionaire/), going into a bit more detail on the actual design philosophy and approach taken to development.
 
-| Saying "show scoreboard" should launch a new game   | Game scene loads | Game scene loaded | **PASS**  |
+****
+
 ## Conclusions & Recommendations–
 Conclusions are what you have learned from this project and the associated research.  Recommendations are what you would do differently if you were to undertake the project again.  The Reflective Piece–what I learned and “enjoyed”! This gives scope for a critical evaluation of the project and the objective that you tried to achieve
+
+****
 
 ## References
 - [Million Pound notes](https://web.archive.org/web/20110612081217/http://www.thestage.co.uk/features/feature.php/6991)
 - [Speech Recog Pros and Cons](https://www.itchronicles.com/technology/the-pros-and-cons-of-speech-recognition-and-virtual-assistants/)
 
-### LEAVE THIS SECTION BELOW FOR ROUGH WORK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-![](https://vignette.wikia.nocookie.net/millionaire/images/6/62/WWTBAMUK.png/revision/latest?cb=20180516174416)
-
-<p align="center">
-  <b>A voice-controlled implementation of the classic quiz game "Who Wants To Be A Millionaire"</b><br>
-</p>
-
-
-
-
-
-
-
-# Project Overview
-1. [Purpose of the application](#Purpose-of-the-application)
-2. [Gestures identified](#Gestures-identified)
-3. [Hardware used in creating the application](#Hardware-used-in-creating-the-application)
-4. [Architecture for the solution](#Architecture-for-the-solution)
-5. [Conclusions & Recommendations](#Conclusions-&-Recommendations)
-
-## Purpose of the application
-When we were first thinking of ideas for a project, we thought it would be interesting to see if we could develop an applicaton that doesn't use a traditional control method (hands). We discussed and researched the viability of a couple of ideas but eventually decided on <b> Windows Speech Recognition</b> as it was something we had never used before as well as being something that wouldn't require any additional expensive hardware or complicated setup.
-
-We wanted the game to be <b> accessible</b>, <b>easy to use</b> and most of all <b>FUN!</b>.
-
-Our original idea for a voice controlled game was a puzzle game. We though this idea was interesting but upon doing some testing, when you made a mistake and attempted speech to correct this was very frustrating. Therefore, we wanted a game that was not overly complicated gameplay wise but where there was also a compelling and interesting reason to use voice.
-
-We envisioned a group of people being able to sit back and relax and play the game on a large or small screen together and being able to enjoy the handsfree, minimal setup our game requires.
-
-
-## Gestures identified
-The game has been configured to be fully functional with just a users voice. Although we did also implement the solution to be fully compatable with mouse input aswell as touch controls so at any time under every circumstance.
-
-A list of <i>voice-gestures</i> found in the application are as follows
-
-* Play game, Exit Game, Pause
-* A, B, C, D
-* Final Answer
-* Yes/No
-* Score/Scoreboard/Show score
-
-Depending on which scene you are in, Settings, Menu, Main Game etc. the user has a list of available voice commands available to them. The user cannot use voice commands found in the Main Menu in the Main Game and vice-versa. We setup the Speech Recognition this way as we did not want the user to experience unexpected behaviour when playing the game.
-
-We understand that the range of <i>voice-gestures</i> available is not huge but we wanted to focus on the actual implementation of these gestures in a gameplay sense rather than simply expanding the list of gestures for the sake of it.
-
-To identify the <i>voice-gestures</i> done by the user, we used Unity's impleentation of Windows 10's Speech Recognition API.  This lead to minimal setup for the user (which can be extremely appealing to a lot of people) and a generally streamlined, lightweight application.
-
-To further progress towards our overall goal of <b>accessibility</b>, we ensured the game was <b>lightweight</b> in it's resource use and that the UI was <b>simple</b> and <b>intuitive</b> to navigate.
