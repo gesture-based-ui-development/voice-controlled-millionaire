@@ -271,7 +271,40 @@ Question[] loadQuestions()
     return questionList.questions;
 }
 ```
+***
+## Testing
+### Main Menu
+| Test | Expected Result                                                         | Actual Result                                                           | PASS/FAIL |
+| ----- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | --------- |
+| Saying "new game" should launch a new game   | Game scene loads | Game scene loaded | **PASS**  |
+| Saying "play game" should launch a new game   | Game scene loads | Game scene loaded | **PASS**  |
+| Saying "play" should launch a new game   | Game scene loads | Game scene loaded | **PASS**  |
+| Saying "quit" should terminate the game   | Game shuts down | Game shut down| **PASS**  |
+| Saying "exit" should terminate the game   | Game shuts down | Game shut down| **PASS**  |
+| Clicking [new game] should launch a new game   | Game scene loads | Game scene loaded | **PASS**  |
 
+### In Game Scene
+| Test | Expected Result                                                         | Actual Result                                                           | PASS/FAIL |
+| ----- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | --------- |
+| Saying "new game" should launch a new game   | Game scene loads | Game scene loaded | **PASS**  |
+| Clicking [new game] should launch a new game   | Game scene loads | Game scene loaded | **PASS**  |
+| Saying "show scoreboard"  | Scoreboard comes into view | scoreboard came into view | **PASS**  |
+| Saying "scoreboard"  | Scoreboard comes into view | scoreboard came into view | **PASS**  |
+| Saying "score"  | Scoreboard comes into view | scoreboard came into view | **PASS**  |
+| Saying "pause"  | Scoreboard comes into view | scoreboard came into view | **PASS**  |
+| Saying ["a","b","c","d"]  | Should select and highlight answer |  answer was selected and highlighted| **PASS**  |
+| Saying ["a","b","c","d"]  | Should select an answer and prompt for final answer |  answer was selected and final answer prompted | **PASS**  |
+
+### In Game Scene (Final Answer mode)
+| Saying "Yes"   | Selects final answer | Final answer selected | **PASS**  |
+| Saying "Final Answer"   | Selects final answer | Final answer selected | **PASS**  |
+| Saying "No"   | deselects final answer | Final answer deselected | **PASS**  |
+| Select correct answer   | Correct answer highlighted and move to next question | Answer highlighted and new question loaded | **PASS**  |
+| Select wrong answer   | Wrong answer highlighted and game ends | Wrong answer highlighted and game ends | **PASS**  |
+
+
+
+| Saying "show scoreboard" should launch a new game   | Game scene loads | Game scene loaded | **PASS**  |
 ## Conclusions & Recommendations–
 Conclusions are what you have learned from this project and the associated research.  Recommendations are what you would do differently if you were to undertake the project again.  The Reflective Piece–what I learned and “enjoyed”! This gives scope for a critical evaluation of the project and the objective that you tried to achieve
 
