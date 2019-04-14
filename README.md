@@ -21,12 +21,11 @@ As stated above, the project is essentially a voice-controlled implementation of
 The original goal of the project was to develop a game/application using <b>Gesture-Based</b> controls. We choice Voice/Speech recognition as our "<i>gesture</i>".
 
 # Table of Contents
-
 - [Overview](#overview)
 - [Table of Contents](#table-of-contents)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Purpose of the application–](#purpose-of-the-application-)
+- [Purpose of the application](#purpose-of-the-application)
   * [How to play](#how-to-play)
 - [Research](#research)
     + [Initial Research on Gesture Consideration](#initial-research-on-gesture-consideration)
@@ -43,8 +42,12 @@ The original goal of the project was to develop a game/application using <b>Gest
     + [In Game Scene](#in-game-scene)
     + [In Game Scene (Final Answer mode)](#in-game-scene--final-answer-mode-)
 - [Presentation](#presentation)
-  * [Conclusions & Recommendations–](#conclusions---recommendations-)
-  * [References](#references)
+- [Video](#video)
+- [Conclusions & Recommendations](#conclusions---recommendations)
+  * [Conclusions](#conclusions)
+  * [Recommendations](#recommendations)
+- [**_Members_**](#---members---)
+- [References](#references)
 
 # Prerequisites
 
@@ -356,16 +359,27 @@ A presentation style document can be found [here](https://prezi.com/p/_xs2mrmbsd
 
 ****
 
-# Conclusions & Recommendations
-The project was enjoyable in many areas, from research & design, to implementation and getting to play with the final solution. 
+# Video 
+The below is a video hosted on Youtube to show the game in action.
+[![Watch the video](https://img.youtube.com/vi/1kK1Mwoc4xI/maxresdefault.jpg)](https://www.youtube.com/watch?v=1kK1Mwoc4xI&feature=youtu.be&fbclid=IwAR2RNmdjE7aaxMpW14906my4KMrnEUKKh2uaVOeTRIWzpIIja9fHxM7oG2U)
 
+# Conclusions & Recommendations
+The project was enjoyable in many areas, from research & design, to implementation and getting to play with the final solution.
+
+## Conclusions
 In terms of research it was very interesting to discover the vast amount of technologies currently available to allow user input into a system, without using the traditional keyboard and mouse approach. It was clearly evident that whilst the choice of games using these technologies is still limited, the amount of implementations are increasing by the day. One astonishing finding we made during our research period was the very small amount of voice controlled games available on the market, as most only worked off sound patterns in contrast to our solution which recognised keywords from a user. From what we could find the main cause for the lack of voice controlled game appears to be related to cross compatibility issues. That is, with so many different libraries, packages and software's used for voice input they all seem to target different platforms as appose to a mutli platform solution. Thus meaning to develop a voice controlled game over many different platforms a different implementation  would have to be adapted for each build. Such as using **Windows Speech Recognition** for Windows and UWP systems and [Mobile Speech Recognition](https://assetstore.unity.com/search?q=speech&q=mobile) to target android an IOS mobile devices.
 
-When looking back at the project from a learning and development approach our knowledge portfolio has expanded in many areas. We gained more hands on experience with Using Unity Game Engine and incorporating third party libraries. Scripting all aspects of the game ourselves we have greatly improved are skill set with **C#**, from using object orientated concepts to ensure a smooth gameplay, to the implementation of **C#** programming techniques such as IEnumerators  to produce co-routines. On top of all this many other skills we put to the test when developing the UI. Creating all our sprites from the ground up we increased our ability to work with image editing software's, producing clean, sizeable and functional sprite sheets. In order to add to the in game tension we used Audio editors and online libaries to pull v   
+When looking back at the project from a learning and development approach our knowledge portfolio has expanded in many areas. We gained more hands on experience with Using Unity Game Engine and incorporating third party libraries. Scripting all aspects of the game ourselves we have greatly improved are skill set with **C#**, from using object orientated concepts to ensure a smooth gameplay, to the implementation of **C#** programming techniques such as IEnumerators  to produce co-routines. On top of all this many other skills we put to the test when developing the UI. Creating all our sprites from the ground up we increased our ability to work with image editing software's, producing clean, sizeable and functional sprite sheets. In order to add to the in game tension we used Audio editors and online libraries to download videos, extract the audio source and crop files to the desired length to result in sound clips that could be used for the game.
 
+## Recommendations
+The finished project achieved all our initial goals and implementing everything we had outlined to do. Thus being said as with any software project, we still found a few areas we could improve on and would recommend giving a chance to do the project again.
+
+**Cross platform functionality**, to be able to fully release the game to a mass market we feel a big improvement would to make the game work on multiple operating systems and devices. This could be achieved by adapting the code to detect which type of device is being used and to alter the speech recognition library being used to suit the desired device. 
+
+**Extra in game functions**, to increase the real life feel of playing the real _Who wants to be a Millionaire_ tv game show a small amount of features could be adapted. When a user is unsure of an answer we could prompt the 3 in game options that are _Phone a friend_, _ 50-50_ and _Ask the audience_. We do not feel this would be overly complicated to add into the program but for the purpose of the project at hand it was no no benefit to invest our time in trivial functions.
 ****
 
-# **_Members_**
+# Members
 [![ForTheBadge built-by-developers](http://ForTheBadge.com/images/badges/built-by-developers.svg)](https://GitHub.com/Naereen/)
 - [Kevin Barry](https://github.com/kbarry91)
 - [Edward Eldridge](https://github.com/EddieEldridge)
