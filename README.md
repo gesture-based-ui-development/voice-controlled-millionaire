@@ -1,12 +1,13 @@
 <p align="center">
 <img src="https://i.imgur.com/MtWcb7b.png" width=50%>
-<h1>GestureBasedUIProject</h1>
 </p>
+
+<h1 align="center">GestureBasedUIProject</h1>
 
 # Overview
 
 This repository contains a project completed for GMIT's Gesture Based URI Development. The project stated that we must _Develop and application with a natural user interface_.
-The contents contains the source code and documentation for our voice-controlled implementation of "Who Wants To Be A Millionaire". This document aims to give the reader an insight into the design and development process under the following categories.
+The contents contains the source code and documentation for our voice-controlled implementation of **"Who Wants To Be A Millionaire"**. This document aims to give the reader an insight into the design and development process under the following categories.
 
 1. Purpose of the application
 2. Gestures identified
@@ -14,10 +15,9 @@ The contents contains the source code and documentation for our voice-controlled
 4. Architecture for the solution
 5. Conclusions & Recommendations
 
-
 As stated above, the project is essentially a voice-controlled implementation of the classic quiz game "Who Wants To Be A Millionaire". 
 
-The original goal of the project was to develop a game/application using <b>Gesture-Based</b> controls. We choice Voice/Speech recognition as our "<i>gesture</i>".
+The original goal of the project was to develop a game/application using <b>Gesture-Based</b> controls. We choice Voice/Speech recognition as our "_gesture_" for the reasons outlined in the  [Research Section](#research).
 
 # Table of Contents
 - [Overview](#overview)
@@ -32,7 +32,8 @@ The original goal of the project was to develop a game/application using <b>Gest
 - [Gestures identified](#gestures-identified)
 - [Hardware used in creating the application](#hardware-used-in-creating-the-application)
 - [Software used in creating the application](#software-used-in-creating-the-application)
-- [Architecture for the solution–](#architecture-for-the-solution-)
+- [Architecture for the solution](#architecture-for-the-solution)
+  * [Relevant Libraries](#relevant-libraries)
   * [Game Screens](#game-screens)
   * [Sound system](#sound-system)
   * [File Reading Questions](#file-reading-questions)
@@ -45,7 +46,7 @@ The original goal of the project was to develop a game/application using <b>Gest
 - [Conclusions & Recommendations](#conclusions---recommendations)
   * [Conclusions](#conclusions)
   * [Recommendations](#recommendations)
-- [**_Members_**](#---members---)
+- [Members](#---members---)
 - [References](#references)
 
 # Prerequisites
@@ -57,7 +58,7 @@ The original goal of the project was to develop a game/application using <b>Gest
 ****
 # Installation
 
-* Please ensure you have either downloaded/configured the appropriate language packs inside Windows before attempting to play the game. If you're having trouble with this, please follow this [tutorial on configuring Windows Speech Recognition](https://www.windowscentral.com/how-set-speech-recognition-windows-10).
+* Please ensure you have either downloaded/ configured the appropriate language packs inside Windows before attempting to play the game. If you're having trouble with this, please follow this [tutorial on configuring Windows Speech Recognition](https://www.windowscentral.com/how-set-speech-recognition-windows-10).
 
 * To actually run the game, clone/download this repository. Create an empty directory and navigate to it in CMD. The following command will clone the project to your local machine.
 ```bash
@@ -69,7 +70,7 @@ The original goal of the project was to develop a game/application using <b>Gest
 ****
 
 # Purpose of the application 
-The purpose of the application was to design and develop a game  for users who traditionally wouldn't be able to play classic mouse/keyboard games.
+The purpose of the application was to design and develop a game for users who traditionally wouldn't be able to play classic mouse/keyboard games.
 
 In order to complete the project we set out 4 core objectives.
 1. Research voice-recognition gesture technologies.
@@ -81,7 +82,7 @@ When we were first thinking of ideas for a project, we thought it would be inter
 
 We wanted the game to be <b> accessible</b>, <b>easy to use</b> and most of all <b>FUN!</b>.
 
-Our original idea for a voice controlled game was a puzzle game. We though this idea was interesting but upon doing some testing, when you made a mistake and attempted speech to correct this was very frustrating. Therefore, we wanted a game that was not overly complicated gameplay wise but where there was also a compelling and interesting reason to use voice.
+Our original idea for a voice controlled game was a puzzle game. We though this idea was interesting but upon doing some testing, when you made a mistake and attempted speech to correct this was very frustrating. Therefore, we wanted a game that was not overly complicated gameplay wise but where there was also a compelling and an interesting reason to use voice.
 
 We envisioned a group of people being able to sit back and relax and play the game on a large or small screen together and being able to enjoy the handsfree, minimal setup our game requires.
 
@@ -106,12 +107,12 @@ After investigating the powers and functionality of the available technologies w
 We looked into the pros and cons of many gesture devices available to us, such as the Myo Armband, the Xbox Kinect and the Leap motion. After experimenting with some of these devices we felt the frequency of inaccuracy of the readings of the gestures was too high to produce a solid working solution. Another discovery is that a game built on these technologies would be un-useable to anyone with mobility issues thus lowering the market that can enjoy the game.
 
 Further to this we turned our research towards Speech technologies. 
-> For those with mobility restrictions or the visually impaired, speech recognition has always been a big help, extending the accessibility of computer-based technologies to a much wider audience.
+> _For those with mobility restrictions or the visually impaired, speech recognition has always been a big help, extending the accessibility of computer-based technologies to a much wider audience._
 
 The above quote by _William Goddard_ taken from the article _The Pros and Cons of Speech Recognition and Virtual Assistants_ shaped our ideas on the route the project would take. This finding led to the decision  to design and develop a game  for users who traditionally wouldn't be able to play classic mouse/keyboard games.
 
 ### Games of this type
-To get a further understanding of how this technology could be incorporated into a game we conducted research to see how other developers incorporated speech into games. [itch.io](https;// insert link here) published a list of the top voice controlled games available on the windows platform:
+To get a further understanding of how this technology could be incorporated into a game we conducted research to see how other developers incorporated speech into games. [itch.io](https://itch.io/) published a list of the top voice controlled games available on the windows platform:
 1. OneHand Clapping (User humms). 
 2. Resonance (howl into glass).
 3. ScreamTrain (Just scream).
@@ -187,13 +188,26 @@ By setting the confidence level of the API to <b>Low</b>, it meant that the appl
 To create the application we had to use a variety of different software's available to us to complete numerous tasks
 - **Unity 2018** Game Engine to build the game.
 - **Visual Studio 2017** Code editor to write c# scripts.
-- **Paint.net** Image editing software for designing sprites
+- **Paint.net** Image editing software for designing sprites.
 - **Audacity** Audio editor to edit sound clips.
 - **GitHub** Version control.
 
-# Architecture for the solution–
-the full architecture for the solution, including the class diagrams, any data models, communications and distributed elements that you are creating.The architecture must make sense when the gestures and the hardware are combined. Justification is necessary in the documentation for this.You need to include a list of relevant libraries that you used in the project.
-- using UnityEngine.Windows.Speech;
+# Architecture for the solution
+In this section we will look at the  architecture for the solution. Using visual images of in game screenshots, snippets of code and describing game logic we will show how when the gestures, hardware and software are combined it all makes sense and fits together as a finished product.
+
+## Relevant Libraries
+Below is a brief list of the most relevant libraries that were used in the project:
+```c
+using UnityEngine.Windows.Speech;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+```
+
 ## Game Screens
 Main Menu          |  Scoreboard
 :-------------------------:|:-------------------------:
@@ -287,6 +301,20 @@ The game is based on answering questions so one requirement was that the game wo
 }]
 } 
 ```
+The above displays the questions in Json format. However to be able to use these questions in a game we created a Question object as shown below.
+```csharp
+[System.Serializable]
+public class Question
+{
+    public string question;
+    public string A;
+    public string B;
+    public string C;
+    public string D;
+    public string answer;
+}
+  
+```
 The file used currently holds 1500 different choices. Subsequently for each new game 15 questions are picked at random and stored in an array. 
 ```csharp
 // Load the questions.
@@ -366,7 +394,7 @@ The below is a video hosted on Youtube to show the game in action.
 The project was enjoyable in many areas, from research & design, to implementation and getting to play with the final solution.
 
 ## Conclusions
-In terms of research it was very interesting to discover the vast amount of technologies currently available to allow user input into a system, without using the traditional keyboard and mouse approach. It was clearly evident that whilst the choice of games using these technologies is still limited, the amount of implementations are increasing by the day. One astonishing finding we made during our research period was the very small amount of voice controlled games available on the market, as most only worked off sound patterns in contrast to our solution which recognised keywords from a user. From what we could find the main cause for the lack of voice controlled game appears to be related to cross compatibility issues. That is, with so many different libraries, packages and software's used for voice input they all seem to target different platforms as appose to a mutli platform solution. Thus meaning to develop a voice controlled game over many different platforms a different implementation  would have to be adapted for each build. Such as using **Windows Speech Recognition** for Windows and UWP systems and [Mobile Speech Recognition](https://assetstore.unity.com/search?q=speech&q=mobile) to target android an IOS mobile devices.
+In terms of research it was very interesting to discover the vast amount of technologies currently available to allow user input into a system, without using the traditional keyboard and mouse approach. It was clearly evident that whilst the choice of games using these technologies is still limited, the amount of implementations are increasing by the day. One astonishing finding we made during our research period was the very small amount of voice controlled games available on the market, as most only worked off sound patterns in contrast to our solution which recognised keywords from a user. From what we could find the main cause for the lack of voice controlled game appears to be related to cross compatibility issues. That is, with so many different libraries, packages and software's used for voice input they all seem to target different platforms as appose to a mutli-platform solution. Thus meaning to develop a voice controlled game over many different platforms a different implementation  would have to be adapted for each build. Such as using **Windows Speech Recognition** for Windows and UWP systems and [Mobile Speech Recognition](https://assetstore.unity.com/search?q=speech&q=mobile) to target android an IOS mobile devices.
 
 When looking back at the project from a learning and development approach our knowledge portfolio has expanded in many areas. We gained more hands on experience with Using Unity Game Engine and incorporating third party libraries. Scripting all aspects of the game ourselves we have greatly improved are skill set with **C#**, from using object orientated concepts to ensure a smooth gameplay, to the implementation of **C#** programming techniques such as IEnumerators  to produce co-routines. On top of all this many other skills we put to the test when developing the UI. Creating all our sprites from the ground up we increased our ability to work with image editing software's, producing clean, sizeable and functional sprite sheets. In order to add to the in game tension we used Audio editors and online libraries to download videos, extract the audio source and crop files to the desired length to result in sound clips that could be used for the game.
 
@@ -384,6 +412,10 @@ The finished project achieved all our initial goals and implementing everything 
 - [Edward Eldridge](https://github.com/EddieEldridge)
 
 # References
+Below is a list of some resources used for developing the application and conducting the required research.
+
 - [Million Pound notes](https://web.archive.org/web/20110612081217/http://www.thestage.co.uk/features/feature.php/6991)
 - [Speech Recog Pros and Cons](https://www.itchronicles.com/technology/the-pros-and-cons-of-speech-recognition-and-virtual-assistants/)
 - [Mobile Speech Recognition](https://assetstore.unity.com/search?q=speech&q=mobile)
+- [Tutorial on configuring Windows Speech Recognition](https://www.windowscentral.com/how-set-speech-recognition-windows-10)
+- [Json file reading](https://stackoverflow.com/questions/36896127/reading-a-json-file-into-an-object-c-sharp)
