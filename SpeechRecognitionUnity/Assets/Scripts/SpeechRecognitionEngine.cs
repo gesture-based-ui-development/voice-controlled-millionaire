@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
-
+/*
+ SpeechRecognitionEngine controls the main speech recognition system for in game functions.
+*/
 public class SpeechRecognitionEngine : MonoBehaviour
 {
     // Speech Variables
@@ -34,16 +36,23 @@ public class SpeechRecognitionEngine : MonoBehaviour
         loadQuestion = gameObject.AddComponent(typeof(LoadQuestions)) as LoadQuestions;
         scoreboardScript = gameObject.AddComponent(typeof(ScoreboardScript)) as ScoreboardScript;
 
+        // If keywords are populated.
         if (keywords != null)
         {
+            // If recognizer is not set, set it to a new KeywordRecognizer.
             if (recognizer == null)
             {
                 recognizer = new KeywordRecognizer(keywords, confidence);
-
             }
+
+            // Add phrases to the list of recognized phrases.
             recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
+
+            // Start the recognizer.
             recognizer.Start();
         }
+
+        // Print the input device to console.
         foreach (var device in Microphone.devices)
         {
             Debug.Log(device);
@@ -75,22 +84,23 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 soundController.playFinalSound();
                 finalAnswerPrompt.SetActive(true);
                 break;
+
             case "b":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
                 soundController.playFinalSound();
                 finalAnswerPrompt.SetActive(true);
-
                 break;
+
             case "c":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
                 answerIsFinal = true;
-
                 soundController.playFinalSound();
                 finalAnswerPrompt.SetActive(true);
                 break;
+
             case "d":
                 Debug.Log("[Final Answer test] You first answer is :" + word);
                 finalAnswerWord = word;
@@ -98,21 +108,27 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 soundController.playFinalSound();
                 finalAnswerPrompt.SetActive(true);
                 break;
+
             case "show scoreboard":
                 StartCoroutine(scoreboardScript.showScoreboard(3f));
                 break;
+
             case "scoreboard":
                 StartCoroutine(scoreboardScript.showScoreboard(3f));
                 break;
+
             case "main menu":
                 loadQuestion.resetQuestions();
                 sceneManager.LoadMainMenu();
                 break;
+
             case "score":
                 StartCoroutine(scoreboardScript.showScoreboard(3f));
                 break;
+
             case "quit":
                 break;
+
             case "yes":
                 if (answerIsFinal == true)
                 {
@@ -124,6 +140,7 @@ public class SpeechRecognitionEngine : MonoBehaviour
                     finalAnswerPrompt.SetActive(false);
                 }
                 break;
+
             case "final answer":
                 if (answerIsFinal == true)
                 {
@@ -135,6 +152,7 @@ public class SpeechRecognitionEngine : MonoBehaviour
                     finalAnswerPrompt.SetActive(false);
                 }
                 break;
+
             case "no":
                 soundController.stopFinalSound();
                 Debug.Log("[Final Answer test] Is that your final answer:" + word);
@@ -142,6 +160,7 @@ public class SpeechRecognitionEngine : MonoBehaviour
                 finalAnswerPrompt.SetActive(false);
                 soundController.playEasyBackgroundMusic();
                 break;
+                
             case "new game":
                 sceneManager.StartGame();
                 break;
@@ -157,7 +176,8 @@ public class SpeechRecognitionEngine : MonoBehaviour
     }
 
     /*
-     * Prompt yes/no button dialog to confirm if final answwer
+    (NO LONGER IN USE, KEPT FOR FUTURE EXPANSION)
+    Prompt yes/no button dialog to confirm if final answwer
     */
     private void IsFinalAnswer(string word)
     {

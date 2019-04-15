@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+SoundController is used to control all the sound effects the game uses aswell as music for backround etc.
+ */
 public class SoundController : MonoBehaviour
 {
 

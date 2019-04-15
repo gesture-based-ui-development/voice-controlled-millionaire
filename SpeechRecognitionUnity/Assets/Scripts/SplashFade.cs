@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-// This class handles the fading in and out of the splash screen
+/*
+ This class handles the fading in and out of the splash screen.
+*/
 public class SplashFade : MonoBehaviour
 {
     // Variables
@@ -47,12 +49,17 @@ public class SplashFade : MonoBehaviour
         }
     }
 
-
+    /* 
+    Fade in the splash Image.
+     */
     void FadeIn()
     {
         splashImage.CrossFadeAlpha(1.0f, 1.5f, false);
     }
 
+    /* 
+    Fade out the splash Image.
+     */
     void FadeOut()
     {
         splashImage.CrossFadeAlpha(0f, 2.5f, false);
