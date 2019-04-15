@@ -87,11 +87,12 @@ public class LoadQuestions : MonoBehaviour
         soundController.letsPlay();
 
 
-        // Set the text
+        // Load the questions into a variable allQuestions of type Question[]
         allQuestions = loadQuestions();
         int randomNum = Random.Range(1, 500);
         questionLevel = 0; 
 
+        // Pick 15 random questions from the array of questions and populate a new array of questions with them
         for (int i = 0; i < 15; i++)
         {
             fifteenQuestionArray.Add(allQuestions[randomNum]);
@@ -101,7 +102,7 @@ public class LoadQuestions : MonoBehaviour
         StartCoroutine(advanceToNextQuestion(3f));
     }
 
-    
+    // Fix unformatted json if necessary
     string fixJson(string value)
     {
         value = "{\"Questions\":" + value + "}";
@@ -117,6 +118,7 @@ public class LoadQuestions : MonoBehaviour
         // Parse the json into an object
         QuestionList questionList = JsonUtility.FromJson<QuestionList>(jsonFromFile);
 
+        // Return the list of questions
         return questionList.questions;
     }
 

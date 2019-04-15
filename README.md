@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/MtWcb7b.png" width=50%>
 </p>
 
-<h1 align="center">Gesture Based UI Development</h1>
+<h1 align="center">A Voice-Controlled Implementation of the classic quiz game "Who Wants To Be A Millionaire" </h1>
 
 # Overview
 

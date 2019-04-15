@@ -35,11 +35,11 @@ public class MainMenuSpeechRecognition : MonoBehaviour
         SoundManager.Instance.PlayMenu();
     }
 
+    // When a phrase is recognized, display it to the user so they can verify the game is working
     private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         word = args.text;
         results.text = "You said: <b>" + word + "</b> ";
-
 
         WordChecker();
     }
