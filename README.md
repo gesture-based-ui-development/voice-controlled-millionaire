@@ -60,12 +60,12 @@ The original goal of the project was to develop a game/application using <b>Gest
 
 * Please ensure you have either downloaded/ configured the appropriate language packs inside Windows before attempting to play the game. If you're having trouble with this, please follow this [tutorial on configuring Windows Speech Recognition](https://www.windowscentral.com/how-set-speech-recognition-windows-10).
 
-* To actually run the game, clone/download this repository. Create an empty directory and navigate to it in CMD. The following command will clone the project to your local machine.
+* To build from source/compile the game, clone/download this repository. Create an empty directory and navigate to it in CMD. The following command will clone the project to your local machine.
 ```bash
 > git clone https://github.com/gesture-based-ui-development/voice-controlled-unity-game.git
 ```
 
-* The latest/stable build of the game can be found in the <b>Builds</b> folder in the root directory of the project.
+* The latest/stable build of the game can be found on the [releases page](https://github.com/gesture-based-ui-development/voice-controlled-unity-game/releases) of our GitHub.
 
 ****
 
