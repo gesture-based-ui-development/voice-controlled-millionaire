@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/* 
+ ScoreboardScript is used to control all aspects of the scoreboard.
+ */
 public class ScoreboardScript : MonoBehaviour
 {
 
     // Image variables
-	Image scoreboardQ0;
+    Image scoreboardQ0;
     Image scoreboardQ1;
     Image scoreboardQ2;
     Image scoreboardQ3;
@@ -30,7 +32,7 @@ public class ScoreboardScript : MonoBehaviour
 
     void Awake()
     {
-		scoreboardQ0 = GameObject.Find("MainGameCanvas/Scoreboard/SCORENO").GetComponent<Image>();
+        scoreboardQ0 = GameObject.Find("MainGameCanvas/Scoreboard/SCORENO").GetComponent<Image>();
         scoreboardQ1 = GameObject.Find("MainGameCanvas/Scoreboard/score1").GetComponent<Image>();
         scoreboardQ2 = GameObject.Find("MainGameCanvas/Scoreboard/score2").GetComponent<Image>();
         scoreboardQ3 = GameObject.Find("MainGameCanvas/Scoreboard/score3").GetComponent<Image>();
@@ -47,28 +49,28 @@ public class ScoreboardScript : MonoBehaviour
         scoreboardQ14 = GameObject.Find("MainGameCanvas/Scoreboard/score14").GetComponent<Image>();
         scoreboardQ15 = GameObject.Find("MainGameCanvas/Scoreboard/score15").GetComponent<Image>();
 
-		scoreboardQ0.enabled = false;
-		scoreboardQ1.enabled = false;
-		scoreboardQ2.enabled = false;
-		scoreboardQ3.enabled = false;
-		scoreboardQ4.enabled = false;
-		scoreboardQ5.enabled = false;
-		scoreboardQ6.enabled = false;
-		scoreboardQ7.enabled = false;
-		scoreboardQ8.enabled = false;
-		scoreboardQ9.enabled = false;
-		scoreboardQ10.enabled = false;
-		scoreboardQ11.enabled = false;
-		scoreboardQ12.enabled = false;
-		scoreboardQ13.enabled = false;
-		scoreboardQ14.enabled = false;
-		scoreboardQ15.enabled = false;
+        scoreboardQ0.enabled = false;
+        scoreboardQ1.enabled = false;
+        scoreboardQ2.enabled = false;
+        scoreboardQ3.enabled = false;
+        scoreboardQ4.enabled = false;
+        scoreboardQ5.enabled = false;
+        scoreboardQ6.enabled = false;
+        scoreboardQ7.enabled = false;
+        scoreboardQ8.enabled = false;
+        scoreboardQ9.enabled = false;
+        scoreboardQ10.enabled = false;
+        scoreboardQ11.enabled = false;
+        scoreboardQ12.enabled = false;
+        scoreboardQ13.enabled = false;
+        scoreboardQ14.enabled = false;
+        scoreboardQ15.enabled = false;
     }
 
     // The following IEnumerators handle showing the scoreboard
     public IEnumerator showScoreboard(float timeToShow)
     {
-		Debug.Log("insdie func");
+        Debug.Log("insdie func");
 
         if (LoadQuestions.questionLevel == 0)
         {
@@ -162,9 +164,12 @@ public class ScoreboardScript : MonoBehaviour
         }
     }
 
+    /*
+    Displays the scoreboard for a set amount of time.
+     */
     public IEnumerator showScoreboardAtEnd(float timeToShow)
     {
-		Debug.Log("insdie func");
+        Debug.Log("inside showScoreboardAtEnd func");
 
         if (LoadQuestions.questionLevel == 0)
         {
@@ -258,10 +263,5 @@ public class ScoreboardScript : MonoBehaviour
         }
         loadQuestions.resetQuestions();
         sceneManager.LoadMainMenu();
-
     }
-
-    
-
-
 }

@@ -5,8 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-// This class is used to manage the loading of questions from our JSON file as well
-// as generating questions randomly the JSON file
+/*
+A question object containing the question, choice of answers and the correct answer.
+*/
 [System.Serializable]
 public class Question
 {
@@ -18,12 +19,19 @@ public class Question
     public string answer;
 }
 
+/*
+A QuestionList object that consists of an array of Question objects.
+*/
 [System.Serializable]
 public class QuestionList
 {
     public Question[] questions;
-}
 
+}
+/*
+This class is used to manage the loading of questions from our JSON file as well
+as generating questions randomly the JSON file.
+ */
 [System.Serializable]
 public class LoadQuestions : MonoBehaviour
 {
@@ -64,15 +72,15 @@ public class LoadQuestions : MonoBehaviour
 
     void Awake()
     {
-
+        // Retrieve the Gameobjects and set the colour accordingly.
         aBoxImage = GameObject.Find("A").GetComponent<Image>();
         aBoxImage.color = new Color32(0, 0, 0, 255);
+
         bBoxImage = GameObject.Find("B").GetComponent<Image>();
         bBoxImage.color = new Color32(0, 0, 0, 255);
 
         cBoxImage = GameObject.Find("C").GetComponent<Image>();
         cBoxImage.color = new Color32(0, 0, 0, 255);
-
 
         dBoxImage = GameObject.Find("D").GetComponent<Image>();
         dBoxImage.color = new Color32(0, 0, 0, 255);
@@ -86,13 +94,12 @@ public class LoadQuestions : MonoBehaviour
         questionText = GameObject.Find("QuestionText").GetComponent<TMP_Text>();
         soundController.letsPlay();
 
-
-        // Load the questions into a variable allQuestions of type Question[]
+        // Load the questions into a variable allQuestions of type Question[].
         allQuestions = loadQuestions();
         int randomNum = Random.Range(1, 500);
-        questionLevel = 0; 
+        questionLevel = 0;
 
-        // Pick 15 random questions from the array of questions and populate a new array of questions with them
+        // Pick 15 random questions from the array of questions and populate a new array of questions with them.
         for (int i = 0; i < 15; i++)
         {
             fifteenQuestionArray.Add(allQuestions[randomNum]);
@@ -102,26 +109,33 @@ public class LoadQuestions : MonoBehaviour
         StartCoroutine(advanceToNextQuestion(3f));
     }
 
-    // Fix unformatted json if necessary
+    // Fix unformatted json if necessary.
     string fixJson(string value)
     {
         value = "{\"Questions\":" + value + "}";
         return value;
     }
 
+    /*
+    loadQuestions parses all questions from a Json file and returns a Question array.
+     */
     Question[] loadQuestions()
     {
-        // Read the json and load it into a string
+        // Read the json and load it into a string.
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
         jsonFromFile = File.ReadAllText(filePath);
 
-        // Parse the json into an object
+        // Parse the json into an object.
         QuestionList questionList = JsonUtility.FromJson<QuestionList>(jsonFromFile);
 
-        // Return the list of questions
+        // Return the list of questions.
         return questionList.questions;
     }
 
+    /*
+    generateQuestion prepares the next question to be played,
+    setting the correct sound and assigning the qeustion strings to text boxes in the UI.
+     */
     void generateQuestion()
     {
         // Play a different audio clip corresponding to the diffuculty level.
@@ -175,6 +189,9 @@ public class LoadQuestions : MonoBehaviour
 
     }
 
+    /* 
+    checkAnswer sets a Corountine to start flashing the selected answer
+     */
     public void checkAnswer(string word)
     {
         currentQuestion = fifteenQuestionArray[questionLevel];
@@ -195,12 +212,9 @@ public class LoadQuestions : MonoBehaviour
                 StartCoroutine(flashSelected(dBoxImage, word));
                 break;
         }
-
-
     }
 
-
-    // The following IEnumators are used to add delays to events and to progress through the game
+    // The following IEnumators are used to add delays to events and to progress through the game.
     IEnumerator advanceToNextQuestion(float timeToWait)
     {
         //Debug.Log(Time.time);
@@ -221,18 +235,20 @@ public class LoadQuestions : MonoBehaviour
         imageToFlash.color = new Color32(255, 165, 0, 255);
         yield return new WaitForSeconds(3);
 
+        // Compare the users answer with the correct answer.
         if (currentQuestion.answer.ToLower() == word.ToLower())
         {
+            // Stop the last played audio and start the correct answer audio.
             soundController.stopFinalSound();
             soundController.playRightAnswer();
-            questionLevel++;
+            questionLevel++;// Increase player level.
 
             StartCoroutine(flashCorrect(imageToFlash));
-            // here is were we must implement a pop up to show money board as level increases
             Debug.Log("[DEBUG] Correct answer you have now reached level :" + (questionLevel + 1));
         }
         else if (currentQuestion.answer.ToLower() != word.ToLower())
         {
+            // Flash incorrect answer.
             StartCoroutine(flashIncorrect(imageToFlash));
         }
     }
@@ -276,12 +292,14 @@ public class LoadQuestions : MonoBehaviour
         sceneManager.LoadMainMenu();
     }
 
-    // When you lose, reset the game state
+    /*
+    Resets the Game questions.
+     */
     public void resetQuestions()
     {
         int randomNum = Random.Range(1, 500);
-        questionLevel = 0; 
-        fifteenQuestionArray.Clear();        
+        questionLevel = 0;
+        fifteenQuestionArray.Clear();
 
         for (int i = 0; i < 15; i++)
         {

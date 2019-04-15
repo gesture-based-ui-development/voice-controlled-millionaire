@@ -2,7 +2,9 @@
 using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
 
-// This class is responsible for handling Speech Recognition within the Main Menu
+/*
+MainMenuSpeechRecognition is responsible for handling Speech Recognition within the Main Menu.
+ */
 public class MainMenuSpeechRecognition : MonoBehaviour
 {
     // Instance variables
@@ -23,8 +25,10 @@ public class MainMenuSpeechRecognition : MonoBehaviour
         {
             if (mainMenuRecognizer == null)
             {
+                // Set a new KeywordRecognizer.
                 mainMenuRecognizer = new KeywordRecognizer(menuKeywords, confidence);
             }
+            // Add phrases to the list of recognized phrases.
             mainMenuRecognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
             mainMenuRecognizer.Start();
         }
@@ -32,10 +36,14 @@ public class MainMenuSpeechRecognition : MonoBehaviour
         {
             Debug.Log(device);
         }
+        // Play the menu audio clip.
         SoundManager.Instance.PlayMenu();
     }
 
-    // When a phrase is recognized, display it to the user so they can verify the game is working
+
+    /*
+    When a phrase is recognized, display it to the user so they can verify the game is working.
+     */
     private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         word = args.text;
@@ -78,6 +86,10 @@ public class MainMenuSpeechRecognition : MonoBehaviour
                 break;
         }
     }
+
+    /* 
+    Stop the recognizer when application quits.
+    */
     private void OnApplicationQuit()
     {
         if (mainMenuRecognizer != null && mainMenuRecognizer.IsRunning)
@@ -86,6 +98,10 @@ public class MainMenuSpeechRecognition : MonoBehaviour
             mainMenuRecognizer.Stop();
         }
     }
+
+    /* 
+    Stop the recognizer when application quits.
+    */
     private void destroyRecognizer()
     {
         if (mainMenuRecognizer != null && mainMenuRecognizer.IsRunning)
